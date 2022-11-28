@@ -5,20 +5,15 @@ using namespace std;
 
 class Student{
 
-    public:
+    private:
         int studentID;
         string studentName;
-        int studentContactNo;
-        string studentEmail;
-        string studentMajor;
 
-    Student(int sid, string sn, int scn, string se, string sm){
+
+    Student(int sid, string sn){
 
          studentID = sid;
          studentName = sn;
-         studentContactNo = scn;
-         studentEmail = se;
-         studentMajor = sm;
 
     }
 
@@ -26,9 +21,36 @@ class Student{
 
 void loadStudent(){
 
-    fstream txtFile;
+    //Declaring the size for the 2D array
+    const int m = 4, n = 5;
 
-    txtFile.open("student.txt",ios::in);//read
+
+    //Declare a 2D array to load student details from text file
+    string arr[m][n];
+
+    //Opening the text file by using fstream library
+    fstream txtFile;
+    txtFile.open("student.txt");
+
+    //Read from the text file
+    for(int i = 0; i<m; i++){
+        for(int j = 0; j<n; j++){
+            txtFile >> arr[i][j];
+        }
+    }
+
+    txtFile.close();
+
+    //Print
+    for(int i = 0; i<m; i++){
+        for(int j = 0; j<n; j++){
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    /*
+    txtFile.open("student.txt",ios::in);
     if(txtFile.is_open()){
         string line;
         while(getline(txtFile,line)){
@@ -37,7 +59,9 @@ void loadStudent(){
         txtFile.close();
 
     }
+    */
 }
+
 
 int main(){
 
