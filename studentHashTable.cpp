@@ -1,5 +1,5 @@
 #include <iostream>
-#include<string>
+#include <string>
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -53,26 +53,41 @@ hashTableClass::hashFunction(int key){
 
 hashTableClass::addStudent(int id, string name){
 
-    int index = hashFunction(id);
+    int index = hashFunction(id);         //Calculate the key value based on the hash function
 
-    if(hashTable[index] -> id == 0){
+    if(id == 0){
+        return 0;
+    }
+
+    if(hashTable[index] -> id == id && hashTable[index] -> name == name){
+        return 0;
+    }
+
+    if(hashTable[index] -> id == 0){      //If the specific bucket is uninitialized, place the student ID and student in this bucket
         hashTable[index] -> id = id;
         hashTable[index] -> name = name;
     }else{
         student * ptr = hashTable[index]; // Point to the specific block based on the index given by hash function
-        student * temp = new student;     // Create a new pointer which points a student struct (currently unrelated to the original array)
-        temp -> id = id;                  // Insert the ID provided by the user to the student struct
-        temp -> name = name;              // Insert the name provided by the user to the student struct
-        temp -> next = NULL;              // Declare the next pointer as NULL as there nothing link to the back of it
+        student * temp = new student;     // Create a new pointer which points a student node (currently unrelated to the original array)
+        temp -> id = id;                  // Insert the ID provided by the user to the student node
+        temp -> name = name;              // Insert the name provided by the user to the student node
+        temp -> next = NULL;              // Declare the next pointer as NULL as there is nothing link to the back of it
 
 
         while(ptr->next != NULL){         // Traverse through the chain of the specific block
             ptr  = ptr->next;
+
+            if(ptr-> id == id && ptr-> name == name){
+                return 0;
+            }
         }
 
-    ptr -> next = temp;                   // Make the next pointer of the last node point to the student node we created just now
+        ptr -> next = temp;                   // Make the next pointer of the last node point to the student node we created just now
     }
+
+
     cout << "Student " << name << " added." << endl;
+
 }
 
 hashTableClass::deleteStudent(int id){
@@ -146,21 +161,21 @@ hashTableClass::deleteStudent(int id){
     }
 }
 
-hashTableClass::display(){ //display contents of the hash table
+hashTableClass::display(){                                                             //Display contents of the hash table
 
-    student * tempPtr;
+    student * tempPtr;                                                                 //Declare a temporary pointer to traverse the linked list
 
 
     cout << "Display Student:" << endl;
 
-    for(int i=0; i<10; i++){
-
-        tempPtr = hashTable[i];
+    for(int i=0; i<10; i++){                                                            //Use a for loop to traverse the entire hash table
+        cout << "Index " << i << endl;
+        tempPtr = hashTable[i];                                                         // Let the temporary pointer point to the first index of the hash table
         cout << tempPtr -> id <<endl;
         cout << tempPtr -> name <<endl;
 
-        if(tempPtr -> next != NULL){
-            tempPtr = tempPtr -> next;
+        while(tempPtr -> next != NULL){                                                    //Checking if the bucket under that index have extra student nodes
+            tempPtr = tempPtr -> next;                                                  //If yes, use the temporary pointer to traverse the linked list
             cout << tempPtr -> id <<endl;
             cout << tempPtr -> name <<endl;
         }
@@ -171,50 +186,59 @@ hashTableClass::display(){ //display contents of the hash table
 
 hashTableClass::saveStudent(){
 
-    /*
-    string tempIdArray [HASHTABLESIZE];
-    string tempNameArray [HASHTABLESIZE];
+    student * tempPtr;                                                                  //Declare a temporary pointer to traverse the linked list
 
-    for(int i = 0; i < HASHTABLESIZE; i++){
+    ofstream saveStudentFile("student.txt", ios::out);                                 // ofstream to output the content of the hash table to a text file
 
-        string stringId = to_string(hashTable[i] -> id);
+    for(int i=0; i<HASHTABLESIZE; i++){                                                // Traversing the entire hash table
+            tempPtr = hashTable[i];                                                     // Points to the first element of the hash table
 
-        tempIdArray[i] = stringId;
-        tempNameArray[i] = hashTable[i] -> name;
+            saveStudentFile << "Index :" << i <<endl;                                   // Indicate the index of bucket
+            saveStudentFile << tempPtr -> id << " " << tempPtr -> name  <<endl;         // Output the student ID and name to the text file
 
-    }
-    */
-
-    student * tempPtr;
-
-    ofstream saveStudentFile("student.txt", ios::out);
-
-    for(int i=0; i<HASHTABLESIZE; i++){
-
-            tempPtr = hashTable[i];
-
-        while(tempPtr->next != NULL){
-            saveStudentFile << tempPtr -> id << " " << tempPtr -> name <<endl;
-            tempPtr = tempPtr -> next;
+        while(tempPtr->next != NULL){                                                      // Checking if the bucket under that index have extra student nodes
+            tempPtr = tempPtr -> next;                                                  // If yes, use the temporary pointer to traverse the linked list
+            saveStudentFile << tempPtr -> id << " " << tempPtr -> name <<endl;          // Output the student ID and name to the text file
         }
 
     }
 
-    saveStudentFile.close();
+    saveStudentFile.close();                                                            //Close the file before exiting the function
+
+    cout << "Student list saved successfully!" << endl;
 }
 
 hashTableClass::loadStudent(){
 
+    int tempId;
+    string tempName;
     string tempLine;
+
     ifstream loadStudentFile("student.txt");
 
 
     while(getline(loadStudentFile,tempLine)){
 
+        if (tempLine.find("Index")==tempLine.npos){
+
+            istringstream linestream(tempLine);
+            linestream >> tempId >> tempName;
+
+            addStudent(tempId,tempName);
+
+        }
+
+    }
+
+    loadStudentFile.close();
+
+    cout << "Student list loaded successfully!" << endl;
+
+
+        /*
         int tempIndex = 0;
         int tempIntId;
         string tempName;
-        stringstream linestream(tempLine);
 
         linestream >> tempIntId >> tempName;
 
@@ -222,7 +246,8 @@ hashTableClass::loadStudent(){
         hashTable[tempIndex] -> name = tempName;
 
         tempIndex++;
-    }
+        */
+
 }
 
 hashTableClass::searchStudent(int id){
@@ -235,7 +260,7 @@ hashTableClass::searchStudent(int id){
         cout << "Student Name: " << hashTable[index] -> name << endl;
     }else{
         student * ptr = hashTable[index];
-        while(ptr->next != NULL){           // Traverse the entire linked list until there is a empty space (linear probing)
+        while(ptr->next != NULL){
             ptr  = ptr->next;
         }
     }
@@ -250,18 +275,19 @@ int main(){
     h1.addStudent(97,"Ali");
     h1.addStudent(98,"Abu");
     h1.addStudent(194,"May");
-    h1.display();
-
-    cout << "save student:" <<endl;
-    h1.saveStudent();
+    h1.addStudent(291,"June");
+    h1.addStudent(195,"Akau");
+    h1.addStudent(196,"Ako");
+    h1.addStudent(197,"Atan");
     h1.display();
 
     cout << "load student:" <<endl;
     h1.loadStudent();
     h1.display();
 
-    cout << "search student: " << endl;
-    h1.searchStudent(98);
+    cout << "save student:" <<endl;
+    h1.saveStudent();
+    h1.display();
 
     return 0;
 }
