@@ -9,7 +9,6 @@ class hashTableClass{
 private:
 
     static const int HASHTABLESIZE = 97;
-    static const int STUDENTATTR = 2;
 
     struct student{
         int id;
@@ -29,6 +28,7 @@ public:
     display();
     saveStudent();
     loadStudent();
+    searchStudent(int id);
 
 };
 
@@ -60,18 +60,19 @@ hashTableClass::addStudent(int id, string name){
         hashTable[index] -> name = name;
     }else{
         student * ptr = hashTable[index]; // Point to the specific block based on the index given by hash function
-        student * temp = new student;    // Create a new pointer which points a student struct (currently unrelated to the original array)
-        temp -> id = id;                // Insert the ID provided by the user to the student struct
-        temp -> name = name;             // Insert the name provided by the user to the student struct
-        temp -> next = NULL;             // Declare the next pointer as NULL as there nothing link to the back of i
+        student * temp = new student;     // Create a new pointer which points a student struct (currently unrelated to the original array)
+        temp -> id = id;                  // Insert the ID provided by the user to the student struct
+        temp -> name = name;              // Insert the name provided by the user to the student struct
+        temp -> next = NULL;              // Declare the next pointer as NULL as there nothing link to the back of it
 
 
-        while(ptr->next != NULL){           // Traverse the entire linked list until there is a empty space (linear probing)
+        while(ptr->next != NULL){         // Traverse through the chain of the specific block
             ptr  = ptr->next;
         }
 
-    ptr -> next = temp;
-    }                // Make the next pointer of the last node point to the student node we created just now
+    ptr -> next = temp;                   // Make the next pointer of the last node point to the student node we created just now
+    }
+    cout << "Student " << name << " added." << endl;
 }
 
 hashTableClass::deleteStudent(int id){
@@ -147,15 +148,30 @@ hashTableClass::deleteStudent(int id){
 
 hashTableClass::display(){ //display contents of the hash table
 
+    student * tempPtr;
+
+
+    cout << "Display Student:" << endl;
+
     for(int i=0; i<10; i++){
-        cout << hashTable[i] -> id <<endl;
-        cout << hashTable[i] -> name <<endl;
+
+        tempPtr = hashTable[i];
+        cout << tempPtr -> id <<endl;
+        cout << tempPtr -> name <<endl;
+
+        if(tempPtr -> next != NULL){
+            tempPtr = tempPtr -> next;
+            cout << tempPtr -> id <<endl;
+            cout << tempPtr -> name <<endl;
+        }
+
     }
 
 }
 
 hashTableClass::saveStudent(){
 
+    /*
     string tempIdArray [HASHTABLESIZE];
     string tempNameArray [HASHTABLESIZE];
 
@@ -167,13 +183,21 @@ hashTableClass::saveStudent(){
         tempNameArray[i] = hashTable[i] -> name;
 
     }
+    */
+
+    student * tempPtr;
 
     ofstream saveStudentFile("student.txt", ios::out);
 
     for(int i=0; i<HASHTABLESIZE; i++){
-        saveStudentFile << tempIdArray[i];
-        saveStudentFile << " ";
-        saveStudentFile << tempNameArray[i] <<endl;
+
+            tempPtr = hashTable[i];
+
+        while(tempPtr->next != NULL){
+            saveStudentFile << tempPtr -> id << " " << tempPtr -> name <<endl;
+            tempPtr = tempPtr -> next;
+        }
+
     }
 
     saveStudentFile.close();
@@ -201,6 +225,23 @@ hashTableClass::loadStudent(){
     }
 }
 
+hashTableClass::searchStudent(int id){
+
+    int index = hashFunction(id);
+
+    if(hashTable[index] -> id == id){
+        cout << "Student found at " << index << "th place." << endl;
+        cout << "Student ID: " << hashTable[index] -> id << endl;
+        cout << "Student Name: " << hashTable[index] -> name << endl;
+    }else{
+        student * ptr = hashTable[index];
+        while(ptr->next != NULL){           // Traverse the entire linked list until there is a empty space (linear probing)
+            ptr  = ptr->next;
+        }
+    }
+
+}
+
 int main(){
 
     hashTableClass h1;
@@ -208,15 +249,19 @@ int main(){
     cout << "add student:" << endl;
     h1.addStudent(97,"Ali");
     h1.addStudent(98,"Abu");
+    h1.addStudent(194,"May");
     h1.display();
-    cout << "delete student:" << endl;
-    h1.deleteStudent(97);
-    h1.display();
+
     cout << "save student:" <<endl;
     h1.saveStudent();
+    h1.display();
+
     cout << "load student:" <<endl;
     h1.loadStudent();
     h1.display();
+
+    cout << "search student: " << endl;
+    h1.searchStudent(98);
 
     return 0;
 }
