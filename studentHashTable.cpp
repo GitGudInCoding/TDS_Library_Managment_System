@@ -23,11 +23,11 @@ public:
 
     hashTableClass(); //Constructor
     int hashFunction(int key);
-    addStudent (int key, string name);
-    deleteStudent (int key);
-    display();
-    saveStudent();
-    loadStudent();
+    void addStudent (int id, string name);
+    void deleteStudent (int id);
+    void display();
+    void saveStudent();
+    void loadStudent();
     searchStudent(int id);
 
 };
@@ -43,7 +43,7 @@ hashTableClass::hashTableClass(){ //Constructor
     }
 }
 
-hashTableClass::hashFunction(int key){
+int hashTableClass::hashFunction(int key){
 
     int index;
     index = key % HASHTABLESIZE;
@@ -51,16 +51,16 @@ hashTableClass::hashFunction(int key){
     return index;
 }
 
-hashTableClass::addStudent(int id, string name){
+void hashTableClass::addStudent(int id, string name){
 
-    int index = hashFunction(id);         //Calculate the key value based on the hash function
+    int index = hashFunction(id);         //Calculate the index value based on the hash function
 
     if(id == 0){
-        return 0;
+        return;
     }
 
     if(hashTable[index] -> id == id && hashTable[index] -> name == name){
-        return 0;
+        return;
     }
 
     if(hashTable[index] -> id == 0){      //If the specific bucket is uninitialized, place the student ID and student in this bucket
@@ -78,7 +78,7 @@ hashTableClass::addStudent(int id, string name){
             ptr  = ptr->next;
 
             if(ptr-> id == id && ptr-> name == name){
-                return 0;
+                return;
             }
         }
 
@@ -90,7 +90,7 @@ hashTableClass::addStudent(int id, string name){
 
 }
 
-hashTableClass::deleteStudent(int id){
+void hashTableClass::deleteStudent(int id){
 
      //Use hash function to calculate the index number of the item
     //Store the calculated index number in var "index"
@@ -161,7 +161,7 @@ hashTableClass::deleteStudent(int id){
     }
 }
 
-hashTableClass::display(){                                                             //Display contents of the hash table
+void hashTableClass::display(){                                                             //Display contents of the hash table
 
     student * tempPtr;                                                                 //Declare a temporary pointer to traverse the linked list
 
@@ -184,11 +184,15 @@ hashTableClass::display(){                                                      
 
 }
 
-hashTableClass::saveStudent(){
+void hashTableClass::saveStudent(){
 
     student * tempPtr;                                                                  //Declare a temporary pointer to traverse the linked list
 
     ofstream saveStudentFile("student.txt", ios::out);                                 // ofstream to output the content of the hash table to a text file
+
+    if(!saveStudentFile.is_open()){
+        cout << "Error opening file!" << endl;
+    }
 
     for(int i=0; i<HASHTABLESIZE; i++){                                                // Traversing the entire hash table
             tempPtr = hashTable[i];                                                     // Points to the first element of the hash table
@@ -208,7 +212,7 @@ hashTableClass::saveStudent(){
     cout << "Student list saved successfully!" << endl;
 }
 
-hashTableClass::loadStudent(){
+void hashTableClass::loadStudent(){
 
     int tempId;
     string tempName;
@@ -216,6 +220,9 @@ hashTableClass::loadStudent(){
 
     ifstream loadStudentFile("student.txt");
 
+    if(!loadStudentFile.is_open()){
+        cout << "Error opening file!" << endl;
+    }
 
     while(getline(loadStudentFile,tempLine)){
 
@@ -233,20 +240,6 @@ hashTableClass::loadStudent(){
     loadStudentFile.close();
 
     cout << "Student list loaded successfully!" << endl;
-
-
-        /*
-        int tempIndex = 0;
-        int tempIntId;
-        string tempName;
-
-        linestream >> tempIntId >> tempName;
-
-        hashTable[tempIndex] -> id = tempIntId;
-        hashTable[tempIndex] -> name = tempName;
-
-        tempIndex++;
-        */
 
 }
 
