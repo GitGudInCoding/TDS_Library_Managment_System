@@ -2,35 +2,10 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "Student.h"
 using namespace std;
 
-class hashTableClass{
 
-private:
-
-    static const int HASHTABLESIZE = 97;
-
-    struct student{
-        int id;
-        string name;
-        student * next;
-
-    };
-
-    student * hashTable[HASHTABLESIZE]; //Creates a pointer that points to students with the size of HASHTABLESIZE
-
-public:
-
-    hashTableClass(); //Constructor
-    int hashFunction(int key);
-    void addStudent (int id, string name);
-    void deleteStudent (int id);
-    void display();
-    void saveStudent();
-    void loadStudent();
-    searchStudent(int id);
-
-};
 
 hashTableClass::hashTableClass(){ //Constructor
 
@@ -84,9 +59,6 @@ void hashTableClass::addStudent(int id, string name){
 
         ptr -> next = temp;                   // Make the next pointer of the last node point to the student node we created just now
     }
-
-
-    cout << "Student " << name << " added." << endl;
 
 }
 
@@ -259,7 +231,7 @@ hashTableClass::searchStudent(int id){
     }
 
 }
-
+/*
 int main(){
 
     hashTableClass h1;
@@ -284,3 +256,4 @@ int main(){
 
     return 0;
 }
+*/
