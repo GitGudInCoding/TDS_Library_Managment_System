@@ -309,7 +309,7 @@ menuPage2:
 
     switch(choice){
 
-        case '1' :{
+        case '1' :
 
             system("cls");
             cout << "\n\n\n\n\n";
@@ -319,63 +319,98 @@ menuPage2:
             cout << "\n";
 
             cout << "\t\t\t\t\t\t Student ID: ";
-            cin >> studentIdInt;
-            cin.clear();
-            cin.ignore(10000,'\n');
+            getline(cin, studentIdString);
             /*
             if( cin.get() == '\n' ) {
                 continue;
             }
             */
             cout << "\t\t\t\t\t\t Student Name: ";
-            cin >> studentName;
-            cin.clear();
-            cin.ignore(10000,'\n');
-
-
-            if (!(cin >> studentIdInt)) {
-                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                cin.clear();
-                cin.ignore(10000,'\n');
-                getch();
-                break;
-            }else if(studentName.empty()){
-                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                cin.clear();
-                cin.ignore(10000,'\n');
-                getch();
-                break;
-            }else{
-                continue;
-            }
-
-            /*
-            if (!(cin >> studentIdInt)) {
-                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                cin.clear();
-                cin.ignore(10000,'\n');
-                getch();
-                break;
-            }else if(studentName.empty()){
-                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                getch();
-                break;
-            }else{
-                continue;
-            }
+            getline(cin, studentName);
 
             for (int i = 0; i < studentIdString.length(); i++) {
                 if(isdigit(studentIdString[i]) == false){
-                    cout << "\n\n\n\t\t\t\t\tPlease enter an integer!" << endl;
-                    getch();
-                    break;
+                   cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
+                   cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                   getch();
+                   goto menuPage2;
                 }
+            }
+
+            if(studentName.empty()){
+                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                getch();
+                goto menuPage2;
+            }else{
+                studentIdInt = stoi(studentIdString);
+            }
+
+            /*
+            if(isdigit(studentIdInt) == false){
+                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                getch();
                 break;
             }
+
+
+            if (!(cin >> studentIdInt)) {
+
+                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                break;
+            }
+
+
+            if(studentName.empty()){
+                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                getch();
+                break;
+            }
+
+
+
+            // This code converts from string to number safely.
+            stringstream ss(studentIdString);
+            if (ss >> studentIdInt){
+                cout << "studentIdInt :" << studentIdInt << endl;
+            }
+
+
+            if (!(cin >> studentIdInt)) {
+                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                cin.ignore(10000,'\n');
+                getch();
+                break;
+            }else if(studentName.empty()){
+                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                cin.ignore(10000,'\n');
+                getch();
+                break;
+            }
+
+
+            if (!(cin >> studentIdInt)) {
+                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                cin.clear();
+                cin.ignore(10000,'\n');
+                getch();
+                break;
+            }else if(studentName.empty()){
+                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                getch();
+                break;
+            }else{
+                continue;
+            }
+
+
 
             if(studentIdInt == 0){
                 cout << "\n\n\n\t\t\t\t\tInvalid student ID! Please fill in the correct ID." << endl;\
@@ -389,29 +424,17 @@ menuPage2:
             cout << "\n\n\n\t\t\t\t\tStudent " << studentName << " added successfully!" << endl;
             getch();
             break;
-        }
 
         case '2' :
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ All Book Records ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Student List ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n";
 
-            gotoxy(5,10);
-            cout << "| Book ID";
-            gotoxy(15,10);
-            cout << "| Book Name";
-            gotoxy(40,10);
-            cout <<  "| Book Author";
-            gotoxy(60,10);
-            cout << "| Book Publisher";
-            gotoxy(80,10);
-            cout  << "| Book Status";
-            gotoxy(95,10);
-            cout  << "| Borrower Student ID |" << endl;
-            a.displayBook();
+
+            h1.display();
             getch();
             system("cls");
             break;
