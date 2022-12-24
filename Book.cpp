@@ -1,43 +1,20 @@
 #include <iostream>
 #include <conio.h>
+#include <fstream>
+#include <sstream>
+#include <windows.h>
+#include <string>
+#include <cctype>
+
+#include "Book.h"
 
 using namespace std;
 
-class Book
-{
-private:
-    struct BookNode
-    {
-        //Declare data type and items in the linked list
-        int bookID;
-        string bookName,auth,publ,filename;
-        bool stat;
-
-        BookNode *next; //Pointer to the next node
-    };
-
-    BookNode *head;  //Head pointer of linked list
-    BookNode *temp;  //Pointer point to the latest node in linked list
-    BookNode *disp; //Pointer for display, search and getStatus function
-
-    int size;    //Number of book in linked list
-
-public:
-
-    Book(); //Default constructor
-
-    ~Book(); //Destructor
-
-    void menu();
-    string getStatus() const;
-    void addBook();
-    void delBook();
-    void editBook();
-    void searchBook();
-    void display();
-    void sort();
-
-};
+//TABLE POSITIONING FUNCTION
+void gotoxy(short x,short y){
+COORD p={x,y};
+SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),p);
+}
 
 Book::Book() : size(0), head(NULL), temp(NULL), disp(NULL)
 {
@@ -54,56 +31,8 @@ Book::~Book()
     head = NULL;
 }// Destructor destroy the linked list
 
-void Book::menu()
-{
-    system("cls");
-    char choice;
-    bool exit = false;
-    do{
-    cout << "\n";
-    cout << "1. Add Book Record" << endl;
-    cout << "2. Display All Book Records" << endl;
-    cout << "3. Delete Book Record" << endl;
-    cout << "4. Edit Book Record" << endl;
-    cout << "5. Search Book Record" << endl;
-    cout << "8. Exit" << endl;
-    cout << "\n";
-    cout << "Enter Your Selection: ";
-    cin >> choice;
 
-    switch(choice)
-    {
-    case '1' :
-        addBook();
-        break;
 
-    case '2' :
-        sort();
-        display();
-        menu();
-        break;
-
-    case '3' :
-        delBook();
-        break;
-
-    case '4' :
-        editBook();
-        break;
-
-    case '5' :
-        searchBook();
-        break;
-
-    case '6' :
-        exit = true;
-        break;
-        }
-    }while(!exit);{
-    cout << "\n\n\n\n";
-    cout<<"\t \t \t \t \t \t See You Next Time! \n\n\n\n"<<endl;
-    }
-}
 
 string Book::getStatus() const
 {
@@ -114,23 +43,19 @@ string Book::getStatus() const
     }
 }
 
-void Book::addBook()
+void Book::addBook(string bname1, string bau1, string bpu1)
 {
-    system("cls");
     BookNode *newPtr = new BookNode;
     size = size+1;
     newPtr -> bookID = size;
-
-    cout << "\n";
-    cout << "Book ID: " << newPtr -> bookID  << endl;
-    cout << "Book Name: ";
-    cin >> newPtr -> bookName;
-    cout << "Book Author: ";
-    cin >> newPtr -> auth;
-    cout << "Book Publisher: ";
-    cin >> newPtr -> publ;
+    newPtr -> bookName = bname1;
+    newPtr -> auth = bau1;
+    newPtr -> publ = bpu1;
     newPtr -> stat = true;
+    newPtr -> stuID = NULL;
     newPtr -> next = NULL;
+
+
 
     if(head==NULL){
         temp = newPtr;
@@ -141,105 +66,140 @@ void Book::addBook()
     }
 
     cout << "\n";
-    cout << "Book Added Successfully! . . . ";
+    cout << "\t\t\t\t\t Book Added Successfully! . . . ";
     getch();
     system("cls");
 
 }
 
-void Book::delBook()
+void Book::delBook(int delNo)
 {
-    system("cls");
+
     if(head==NULL)
     {
-         cout << "\n";
-         cout<<"Book Record is Empty!\n";
-         getch();
-         system("cls");
+        cout << "\n\n";
+        cout<<"\t\t\t\t\t\t Book Record is Empty!\n";
     }
     else
     {
-        int delNo;
         BookNode *prev = head;
         BookNode *delp = head;
-        cout << "Enter Book ID that you want to delete: ";
-        cin >> delNo;
-            if((delNo < head -> bookID) || (delNo > size)){
-                cout << "\n";
-                cout << "No Record Found! . . . ";
+        int df = 0;
 
-                getch();
-                system("cls");
 
-            }
-            else
-            {
+
                 if(delp->bookID == delNo){
                 head = delp -> next;
                 delete(delp);
+
+                df = df+1;
+                cout << "\n\n\n\n";
+                cout << "\t\t\t\t\t Book Record Successfully Deleted! . . . ";
+
+                }else if(delNo > getSize()-1){
+                    while( delp -> next != NULL)
+                    {
+                        prev = delp;
+                        delp = delp -> next;
+
+                        if(delNo == delp-> bookID)
+                        {
+                             prev -> next = NULL;
+                             delete(delp);
+                             df=df+1;
+                             temp = prev;
+
+
+                             cout << "\n\n\n\n";
+                             cout << "\t\t\t\t\t Book Record Successfully Deleted! . . . ";
+
+
+                        }
+
+
+                    }
                 }
                 else
                 {
-                    while( prev -> bookID < delNo-1)
+                    while( delp -> next != NULL)
                     {
-                        prev = prev -> next;
+                        prev = delp;
+                        delp = delp -> next;
+
+                        if(delNo == delp-> bookID)
+                        {
+                             prev -> next = delp -> next;
+                             delete(delp);
+                             df =df+1;
+                             cout << "\n\n\n\n";
+                             cout << "\t\t\t\t\t Book Record Successfully Deleted! . . . ";
+
+
+
+                        }
+
                     }
-                    delp = prev -> next;
-                    prev -> next = delp -> next;
-                    delete(delp);
+
                 }
-            cout << "\n";
-            cout << "Book Record Successfully Deleted! . . . ";
-            getch();
-            system("cls");
-            }
+        if(df==0){
+             cout << "\n\n";
+             cout << "\t\t\t\t\t\t No Record Found! . . . ";
+        }
     }
+
+
+
 }
 
-void Book::editBook()
+void Book::editBook(int editNo)
 {
-   system("cls");
+
     if(head==NULL)
     {
-         cout << "\n";
-         cout<<"Book Record is Empty!\n";
-         getch();
-         system("cls");
+         cout << "\n\n";
+         cout<<"\t\t\t\t\t\t Book Record is Empty!\n";
+
     }
     else
     {
-    int editNo;
-    BookNode *edip = head;
-    cout << "Enter Book ID that you want to edit: ";
-    cin >> editNo;
-    if((editNo < head -> bookID) || (editNo > size)){
-        cout << "\n";
-        cout << "No Record Found! . . . ";
 
-        getch();
-        system("cls");
+    BookNode *edip = head;
+
+    if((editNo < head -> bookID) || (editNo > size)){
+        cout << "\n\n";
+        cout << "\t\t\t\t\t\t No Record Found! . . . ";
+
 
 
     }else{
      while(edip != NULL){
             if(editNo == edip -> bookID){
+                string bname1,bau1,bpu1;
                 cout << "\n";
                 cout << "Book ID: " << edip -> bookID  << endl;
                 cout << "Book Name: ";
-                cin >> edip -> bookName;
+                cin.ignore();
+                getline(cin,bname1);
                 cout << "Book Author: ";
-                cin >> edip -> auth;
+                getline(cin,bau1);
                 cout << "Book Publisher: ";
-                cin >> edip -> publ;
+                getline(cin,bpu1);
+
+                if(bname1.empty() || bau1.empty() || bpu1.empty() ){
+                cout << "\n\n\n\t\t\t\t\t Please Fill All the Information! . . . ";
+                break;
+                }
+                edip -> bookName = bname1;
+                edip -> auth = bau1;
+                edip -> publ = bpu1;
+                cout << "\n\n\n\n";
+                cout << "\t\t\t\t\t Book Record Edited Successfully ! . . . ";
             }
         edip = edip -> next;
         }
 
 
-    cout << "\n";
-    cout << "Book Record Successfully ! . . . ";
-    getch();
-    system("cls");
+
     }
 
    }
@@ -247,28 +207,57 @@ void Book::editBook()
 
 void Book::searchBook()
 {
-    system("cls");
     if(head==NULL)
     {
-         cout << "\n";
-         cout<<"Book Record is Empty!\n";
-         getch();
-         system("cls");
+         cout << "\n\n";
+         cout<<"\t\t\t\t\t\t Book Record is Empty!\n\n\n\n\n\n";
     }
     else
     {
         int found = 0;
         string bname;
         disp = head;
-        cout << "Enter Book Name that you want to search: ";
-        cin >> bname;
+        cout << "\t\t\t\t    Enter Book Name that you want to search: ";
+        getline(cin,bname);
+        int x1 = 7;
+        int y1 = 14;
         while(disp != NULL){
-                if(bname == disp -> bookName){
-                   cout << "\nBook ID: " << disp -> bookID << endl;
-                   cout << "Book Name:" << disp -> bookName << endl;
-                   cout << "Book Author:" << disp -> auth << endl;
-                   cout << "Book Publisher:" << disp -> publ << endl;
-                   cout << "Book Status:" << getStatus() << endl;
+                if(disp -> bookName.find(bname) != string::npos){
+
+                    gotoxy(5,12);
+                    cout << "| Book ID";
+                    gotoxy(15,12);
+                    cout << "| Book Name";
+                    gotoxy(40,12);
+                    cout <<  "| Book Author";
+                    gotoxy(60,12);
+                    cout << "| Book Publisher";
+                    gotoxy(80,12);
+                    cout  << "| Book Status";
+                    gotoxy(95,12);
+                    cout  << "| Borrower Student ID |" << endl;
+
+                    gotoxy(x1,y1);
+                    cout << disp -> bookID;
+                    gotoxy(x1+10,y1);
+                    cout << disp -> bookName;
+                    gotoxy(x1+35,y1);
+                    cout << disp -> auth;
+                    gotoxy(x1+55,y1);
+                    cout << disp -> publ;
+                    gotoxy(x1+75,y1);
+                    cout << getStatus();
+
+
+
+        gotoxy(x1+90,y1);
+        if(disp -> stat == false){
+            cout << disp -> stuID << endl;
+            }else{
+            cout << "None" << endl;
+            }
+        y1 = y1+1;
+
                    found++;
                 }
             disp = disp -> next;
@@ -276,22 +265,150 @@ void Book::searchBook()
 
         if(found == 0){
 
-            cout << "\n";
-            cout << "No Book Record Found! . . . ";
-            getch();
-            system("cls");
+            cout << "\n\n";
+            cout << "\t\t\t\t\t   No Book Record Found! . . . ";
 
         }else{
 
-        cout << "\n";
-        cout << found << " Record Found! Press Any Key to Return to Menu . . . ";
-        getch();
-        system("cls");
+        cout << "\n\n";
+        cout << "\t\t\t\t " <<found << " Record Found! Press Any Key to Return to Menu . . . ";
         }
     }
 }
 
-void Book::sort(){ // Sort book name using bubble sort
+void Book::displayBook()
+{
+    disp = head;
+    if(disp==NULL){
+        cout<<"\n\n\n\n\n\t\t\t\t\t\t Book Record is Empty!\n";
+    }
+    int x1 = 7;
+    int y1 = 13;
+    while(disp != NULL){
+
+        gotoxy(x1,y1);
+        cout << disp -> bookID;
+        gotoxy(x1+10,y1);
+        cout << disp -> bookName;
+        gotoxy(x1+35,y1);
+        cout << disp -> auth;
+        gotoxy(x1+55,y1);
+        cout << disp -> publ;
+        gotoxy(x1+75,y1);
+        cout << getStatus();
+
+
+
+        gotoxy(x1+90,y1);
+        if(disp -> stat == false){
+            cout << disp -> stuID << endl;
+            }else{
+            cout << "None" << endl;
+            }
+        y1 = y1+1;
+
+        disp = disp -> next;
+
+    }
+
+    cout << "\n\n\n\n\n";
+    cout << "\t\t\t\t\t Press Any Key to Return to Menu . . . ";
+
+
+}
+
+void Book::loadBook()
+{
+    ifstream input;
+    input.open("BookSave.txt");
+    if(!input.is_open()){
+        cout<< "Error Open File!";
+    }
+
+    int bid,sid;
+    string bn,au,pu;
+    bool stat;
+
+    string inputLine;
+
+    while(getline(input,inputLine))
+    {
+        stringstream ss(inputLine); //convert from string to int or bool, the stringstream is to treat a string as a stream and perform insertion just like cin.
+        ss >>  bid;
+        getline(input,bn);
+
+        getline(input,au);
+
+        getline(input,pu);
+
+        getline(input,inputLine);
+        ss.clear();
+        ss.str(inputLine); //set the content of the stringstream to a new string
+        ss >> stat;
+
+        getline(input,inputLine);
+        ss.clear();
+        ss.str(inputLine);
+        ss >> sid ;
+
+        BookNode *newPtr = new BookNode;
+        size = size+1;
+        newPtr -> bookID = size;
+        newPtr -> bookName = bn;
+        newPtr -> auth = au;
+        newPtr -> publ = pu;
+        newPtr -> stat = stat;
+        newPtr -> stuID = sid;
+        newPtr -> next = NULL;
+
+        if(head==NULL){
+            temp = newPtr;
+            head = temp;
+        }else{
+            temp -> next = newPtr;
+            temp = newPtr;
+        }
+
+    }
+
+    cout << "\n\n\n\n";
+    cout << "\t\t\t\t\t Book Records Successfully Loaded! . . . " << endl;
+
+
+
+
+}
+
+void Book::saveBook()
+{
+    ofstream output;
+    output.open("BookSave.txt");
+    if(!output.is_open()){
+        cout<< "Error Open File!";
+    }
+
+    BookNode *savb;
+    savb = head;
+
+    while(savb !=NULL){
+        output << savb -> bookID << endl;
+        output << savb -> bookName << endl;
+        output << savb -> auth << endl;
+        output << savb -> publ << endl;
+        output << savb -> stat << endl;
+        output << savb -> stuID << endl;
+
+        savb = savb -> next;
+    }
+
+    cout << "\n\n\n\n";
+    cout << "\t\t\t\t\t Book Records Successfully Saved! . . . " << endl;
+
+
+
+}
+
+void Book::sortBook(){ // Sort book name using bubble sort
 
     int count=0,temp_bookID;
     string temp_bookName, temp_auth, temp_publ;
@@ -327,34 +444,67 @@ void Book::sort(){ // Sort book name using bubble sort
         }
     }
 
+    cout << "\n\n\n\n";
+    cout << "\t\t\t\t   Book Records Successfully Sorted by Book Name! . . . " << endl;
+
 }
-void Book::display()
-{
-    system("cls");
-    disp = head;
-    if(disp==NULL){
-        cout<<"Book Record is Empty!\n";
+
+void Book::sortID(){
+
+    int count=0,temp_bookID;
+    string temp_bookName, temp_auth, temp_publ;
+    BookNode*ptr = head;
+    while (ptr != NULL)
+    {
+        count++;
+        ptr = ptr -> next;
     }
+    for(int i=1; i<count; i++){
+        BookNode*ptr=head;
+        for(int j=1; j<count; j++){
+            if(ptr -> bookID > ptr -> next -> bookID)
+            {
+                temp_bookID = ptr -> bookID;
+                temp_bookName = ptr -> bookName;
+                temp_auth = ptr->auth;
+                temp_publ = ptr -> publ;
+
+                // Save book record into current node
+                ptr -> bookID = ptr -> next -> bookID;
+                ptr -> bookName = ptr -> next -> bookName;
+                ptr -> auth = ptr -> next -> auth;
+                ptr -> publ = ptr -> next -> publ;
+
+                //Save book record into next node
+                ptr -> next -> bookID = temp_bookID;
+                ptr -> next -> bookName = temp_bookName;
+                ptr -> next -> auth = temp_auth;
+                ptr -> next -> publ = temp_publ;
+                }
+                ptr = ptr -> next;
+        }
+    }
+    cout << "\n\n\n\n";
+    cout << "\t\t\t\t   Book Records Successfully Sorted by Book ID! . . . " << endl;
+
+
+}
+
+int Book::getSize(){
+    disp=head;
+    int gs = 0;
+    if(head==NULL){
+        return gs;
+    }else{
     while(disp != NULL){
-        cout << "\nBook ID: " << disp -> bookID << endl;
-        cout << "Book Name:" << disp -> bookName << endl;
-        cout << "Book Author:" << disp -> auth << endl;
-        cout << "Book Publisher:" << disp -> publ << endl;
-        cout << "Book Status:" << getStatus() << endl;
         disp = disp -> next;
+        gs = gs+1;
     }
-
-    cout << "\n";
-    cout << "Press Any Key to Return to Menu . . . ";
-    getch();
-    system("cls");
-
+    return gs;
+    }
 }
 
-int main()
-{
-    Book a; // Create object of Book class
-    a.menu();   //Call menu function
-}
+
+
 
 
