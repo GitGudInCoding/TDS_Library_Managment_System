@@ -245,15 +245,65 @@ menuPage1:
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-        cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book Name ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+        cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
         cout << "\n\n";
+        cout << "\t\t\t\t\t 1. Sort by Name \t\t\t\t\t" << endl;
+        cout << "\t\t\t\t\t 2. Sort by Author \t\t\t\t\t" << endl;
+        cout << "\t\t\t\t\t 3. Sort by ID \t\t\t\t\t" << endl;
+        cout << "\t\t\t\t\t 4. Back to Menu \t\t\t\t\t" << endl;
+        char c;
+        cin >> c;
+        cin.sync();
 
-        a.sortBook();
+        switch(c)
+        {
+          case '1':
+            system("cls");
+            cout << "\n\n\n\n\n";
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book Name ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\n\n";
+            a.sortBook();
+            getch();
+            system("cls");
+            break;
 
-        getch();
-        system("cls");
+          case '2' :
+            system("cls");
+            cout << "\n\n\n\n\n";
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book Author ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\n\n";
+            a.sortAuthor();
+
+            getch();
+            system("cls");
+            break;
+
+
+          case '3':
+              system("cls");
+            cout << "\n\n\n\n\n";
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book ID ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\n\n";
+            a.sortID();
+            getch();
+            system("cls");
+            break;
+
+
+          case '4':
+            system("cls");
+            break;
+        }
         break;
+
+
 
     /*
     case '9' :
