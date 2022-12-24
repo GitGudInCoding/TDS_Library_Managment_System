@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <fstream>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ private:
     {
         //Declare data type and items in the linked list
         int bookID;
-        string bookName,auth,publ;
+        string bookName,auth,publ,filename;
         bool stat;
 
         BookNode *next; //Pointer to the next node
@@ -35,6 +36,7 @@ public:
     void editBook();
     void searchBook();
     void display();
+    void sort();
 
 };
 
@@ -65,7 +67,7 @@ void Book::menu()
     cout << "3. Delete Book Record" << endl;
     cout << "4. Edit Book Record" << endl;
     cout << "5. Search Book Record" << endl;
-    cout << "6. Exit" << endl;
+    cout << "8. Exit" << endl;
     cout << "\n";
     cout << "Enter Your Selection: ";
     cin >> choice;
@@ -77,7 +79,9 @@ void Book::menu()
         break;
 
     case '2' :
+        sort();
         display();
+        menu();
         break;
 
     case '3' :
@@ -288,6 +292,43 @@ void Book::searchBook()
     }
 }
 
+void Book::sort(){ // Sort book by name
+
+    int count=0,temp_bookID;
+    string temp_bookName, temp_auth, temp_publ;
+    BookNode*ptr = head;
+    while (ptr != NULL)
+    {
+        count++;
+        ptr = ptr -> next;
+    }
+    for(int i=1; i<count; i++){
+        BookNode*ptr=head;
+        for(int j=1; j<count; j++){
+            if(ptr -> bookName > ptr -> next -> bookName)
+            {
+                temp_bookID = ptr -> bookID;
+                temp_bookName = ptr -> bookName;
+                temp_auth = ptr->auth;
+                temp_publ = ptr -> publ;
+
+                // Save book record into current node
+                ptr -> bookID = ptr -> next -> bookID;
+                ptr -> bookName = ptr -> next -> bookName;
+                ptr -> auth = ptr -> next -> auth;
+                ptr -> publ = ptr -> next -> publ;
+
+                //Save book record into next node
+                ptr -> next -> bookID = temp_bookID;
+                ptr -> next -> bookName = temp_bookName;
+                ptr -> next -> auth = temp_auth;
+                ptr -> next -> publ = temp_publ;
+                }
+                ptr = ptr -> next;
+        }
+    }
+
+}
 void Book::display()
 {
     system("cls");
@@ -315,7 +356,6 @@ int main()
 {
     Book a; // Create object of Book class
     a.menu();   //Call menu function
-
 }
 
 
