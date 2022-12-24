@@ -291,7 +291,7 @@ void Book::searchBook()
     }
 }
 
-void Book::sort(){ // Sort book by name
+void Book::sort(){ // Sort book name using bubble sort
 
     int count=0,temp_bookID;
     string temp_bookName, temp_auth, temp_publ;
