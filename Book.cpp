@@ -34,12 +34,14 @@ Book::~Book()
 
 
 
-string Book::getStatus() const
+string Book::getStatus()const
 {
-    if(disp -> stat==1){
+    if(disp -> stat== true){
         return "Available";
-    }else{
+    }else if(disp->stat == false){
         return "Unavailable";
+    }else{
+        return "N/A";
     }
 }
 
@@ -548,18 +550,45 @@ void Book::borrowBook()
     else
     {
         int bid;
+        int sid;
         disp = head;
         cout << "Enter Book ID that you want to borrow: ";
         cin >> bid;
+        cin.ignore();
+
+        cout << "Enter the borrower's student ID: ";
+        cin >> sid;
+        cin.ignore();
+
+
+        while(disp != NULL){
+
+                if(bid == disp -> bookID && disp->stat == false){
+                    cout << "The book is currently unavailable as it is borrowed by other student." << endl;
+                }
+
+                if(bid == disp -> bookID && disp->stat == true){
+                   cout << "The Book Details" << endl;
+                   cout << "Book ID: " << disp -> bookID << endl;
+                   cout << "Book Name:" << disp -> bookName << endl;
+                   cout << "Book Author:" << disp -> auth << endl;
+                   cout << "Book Publisher:" << disp-> publ << endl;
+                   cout << "Book Status:" << getStatus() << endl;
+                   cout << "Student Id " << disp->stuID << endl;
+                   disp->stuID = sid;
+
+
+        /*
         BookNode *borrow1 = head;
         while(borrow1 != NULL){
-                if(bid == borrow1 -> bookID ){
+                if(bid == borrow1 -> bookID || borrow1->stat == true){
                 cout << "The Book Details" << endl;
                    cout << "Book ID: " << borrow1 -> bookID << endl;
                    cout << "Book Name:" << borrow1 -> bookName << endl;
                    cout << "Book Author:" << borrow1 -> auth << endl;
                    cout << "Book Publisher:" << borrow1-> publ << endl;
-                   cout << "Book Status:" << getStatus() << endl;
+                   cout << "Book Status:" << borrow1->stat << endl;
+        */
 
 
                    char response;
@@ -567,17 +596,18 @@ void Book::borrowBook()
                     cout << "Do you want to borrow book(y/n): ";
                     cin >> response;
 
-                if (response =='y')
-                  {
-                    borrow1->stat = false;
+                if (response =='y'){
+                    disp->stat = false;
                     cout << "\n";
                     cout << "Borrow successful..";
+                    break;
                 }
                else{
-                cout << "Borrow cancel";
+                    cout << "Borrow cancelled..";
+                    break;
                }
             }
-            borrow1 = borrow1 -> next;
+            disp = disp -> next;
 
         }
     }
@@ -609,21 +639,23 @@ void Book::returnBook()
         disp = head;
         cout << "Enter Book ID that you want to return: ";
         cin >> bid;
-        BookNode *return1 = head;
-        while(return1 != NULL){
-                if(bid == return1 -> bookID && return1->stat == false){
+
+        while(disp != NULL){
+                if(bid == disp -> bookID && disp->stat == false){
                 cout << "The Book Details" << endl;
-                   cout << "Book ID: " << return1 -> bookID << endl;
-                   cout << "Book Name:" << return1 -> bookName << endl;
-                   cout << "Book Author:" << return1 -> auth << endl;
-                   cout << "Book Publisher:" << return1-> publ << endl;
+                   cout << "Book ID: " << disp -> bookID << endl;
+                   cout << "Book Name:" << disp -> bookName << endl;
+                   cout << "Book Author:" << disp -> auth << endl;
+                   cout << "Book Publisher:" << disp-> publ << endl;
                    cout << "Book Status:" << getStatus() << endl;
 
 
-                if (return1->stat == false){
-                   return1->stat = true;
+                if (disp->stat == false){
+                   disp->stat = true;
                     cout << "\n";
                     cout << "Return successful..";
+                    break;
+
 
                     }else{
                         cout << "\n";
@@ -631,9 +663,7 @@ void Book::returnBook()
                         break;
                     }
                 }
-
-
-           return1 = return1 -> next;
+           disp = disp -> next;
         }
 
         }else {

@@ -5,9 +5,7 @@
 #include <cstring>
 
 #include "Book.cpp"
-#include "Book.h"
 #include "Student.cpp"
-#include "Student.h"
 
 using namespace std;
 
@@ -45,7 +43,7 @@ menuPage1:
     cout << "\t\t\t\t\t 7. Save Book Record \t\t\t\t\t" << endl;
     cout << "\t\t\t\t\t 8. Sort Book Record \t\t\t\t\t" << endl;
     cout << "\t\t\t\t\t a. Borrow Book \t\t\t\t\t" << endl;
-    cout << "\t\t\t\t\t b. Return Book \t\t\t\t\t" << endl;    
+    cout << "\t\t\t\t\t b. Return Book \t\t\t\t\t" << endl;
     cout << "\t\t\t\t\t 9. Next page \t\t\t\t\t" << endl;
     cout << "" << endl;
     cout << "\n";
@@ -305,7 +303,7 @@ menuPage1:
         }
         break;
 
-case 'a' :
+    case 'a' :
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
