@@ -17,7 +17,7 @@ int main()
     system("cls");
     static char choice;
     bool exit = false;
-    int delNo1,editNo1;
+    int delNo1,editNo1,sid;
     string bname,bau,bpu,inputyn;
 
     //temporary variables for class student
@@ -307,13 +307,25 @@ menuPage1:
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Borrow Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-        cout << "\n";
-        a.borrowBook();
         cout << "\n\n";
+        cout << "\t\t\t\t    Enter Student ID: ";
+        cin >> sid;
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore();
+            cout << "\n\n\n\n";
+            cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+
+        }else{
+
+        a.borrowBook();
+
+        }
 
         getch();
         system("cls");
         break;
+
 
 
     case 'b' :
@@ -322,9 +334,20 @@ menuPage1:
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Return Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
-        cout << "\n";
-        a.returnBook();
         cout << "\n\n";
+        cout << "\t\t\t\t    Enter Student ID: ";
+        cin >> sid;
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore();
+            cout << "\n\n\n\n";
+            cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+
+        }else{
+
+        a.returnBook();
+
+        }
 
         getch();
         system("cls");
@@ -570,6 +593,5 @@ menuPage2:
     cout<<"\t \t \t \t \t \t See You Next Time! \n\n\n\n"<<endl;
     }
 }
-
 
 
