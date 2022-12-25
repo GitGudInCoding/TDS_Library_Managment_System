@@ -30,17 +30,25 @@ void hashTableClass::addStudent(int id, string name){
 
     int index = hashFunction(id);         //Calculate the index value based on the hash function
 
-    if(id == 0){
+    if(id == 0 && name == "none"){                                                //Exception handling: Invalid ID and name format
+        cout << "\n\n\n\t\t\t\t\t Please enter valid ID and name format!";
+        cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
         return;
     }
 
-    if(hashTable[index] -> id == id && hashTable[index] -> name == name){
+    if (hashTable[index] -> id == id){                                            //Exception handling: repeated student ID
+
+        cout << "\n\n\n\t\t\t\t\t This ID have been registered in the system!";
+        cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
         return;
     }
 
-    if(hashTable[index] -> id == 0){      //If the specific bucket is uninitialized, place the student ID and student in this bucket
+    if(hashTable[index] -> id == 0 ){      //If the specific bucket is uninitialized, place the student ID and student in this bucket
         hashTable[index] -> id = id;
         hashTable[index] -> name = name;
+        cout << "\n\n\n\t\t\t\t\t Student " << name <<" added successfully!";
+        cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+
     }else{
         student * ptr = hashTable[index]; // Point to the specific block based on the index given by hash function
         student * temp = new student;     // Create a new pointer which points a student node (currently unrelated to the original array)
@@ -50,16 +58,20 @@ void hashTableClass::addStudent(int id, string name){
 
 
         while(ptr->next != NULL){         // Traverse through the chain of the specific block
-            ptr  = ptr->next;
+            ptr = ptr->next;
 
-            if(ptr-> id == id && ptr-> name == name){
+            if(ptr-> id == id){                                                                    //Exception handling: repeated student ID in chaining
+                cout << "\n\n\n\t\t\t\t\t This ID have been registered in the system!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
                 return;
             }
         }
 
-        ptr -> next = temp;                   // Make the next pointer of the last node point to the student node we created just now
-    }
+    ptr -> next = temp;                   // Make the next pointer of the last node point to the student node we created just now
+    cout << "\n\n\n\t\t\t\t\t Student " << name <<" added successfully!";
+    cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
 
+    }
 }
 
 void hashTableClass::deleteStudent(int id){
@@ -75,7 +87,7 @@ void hashTableClass::deleteStudent(int id){
     //Case 0 - the entire hash table is empty
 
     if(hashTable[index]->id == 0){
-        cout << id << " was not found in the Hash Table\n";
+        cout << "\t\t\t\t    Student with ID of "<< id << " was not found in the Hash Table\n";
     }
 
     //Case 1 - hash table has only 1 student and it matches
@@ -85,7 +97,7 @@ void hashTableClass::deleteStudent(int id){
         hashTable[index]-> id = 0;
         hashTable[index]-> name = "none";
 
-        cout << id << " was removed from the Hash Table\n";
+        cout << "\t\t\t\t    Student with ID of "<< id << " was deleted successfully.\n";
     }
 
     //Case 2 - hash table have many items and first student matches
@@ -95,7 +107,7 @@ void hashTableClass::deleteStudent(int id){
         hashTable[index] = hashTable[index] -> next;
         delete delPtr;
 
-        cout << id << " was removed from the Hash Table\n";
+        cout << "\t\t\t\t    Student with ID of "<< id << " was deleted successfully.\n";
     }
 
     //Case 3 - hash table have many items and first student cannot match
@@ -113,7 +125,7 @@ void hashTableClass::deleteStudent(int id){
       //Case 3.1 - no match
 
         if(p1 == NULL){
-            cout << id << " was not found in the Hash Table\n";
+            cout << "\t\t\t\t    Student with ID of " << id << " was not found in the system.\n";
         }
 
     //Case 3.2 - match
@@ -128,7 +140,7 @@ void hashTableClass::deleteStudent(int id){
             //Only delPtr is pointing to the one we want to delete at this step
 
             delete delPtr;
-            cout << id << " was removed from the Hash Table\n";
+            cout << "\t\t\t\t    Student with ID of " << id << " was deleted successfully.\n";
         }
     }
 }
@@ -181,7 +193,7 @@ void hashTableClass::saveStudent(){
 
     saveStudentFile.close();                                                            //Close the file before exiting the function
 
-    cout << "Student list saved successfully!" << endl;
+    cout << "\t\t\t\t    Student list saved successfully!";
 }
 
 void hashTableClass::loadStudent(){
@@ -210,9 +222,7 @@ void hashTableClass::loadStudent(){
     }
 
     loadStudentFile.close();
-
-    cout << "Student list loaded successfully!" << endl;
-
+    system("cls");
 }
 
 hashTableClass::searchStudent(int id){
@@ -231,29 +241,4 @@ hashTableClass::searchStudent(int id){
     }
 
 }
-/*
-int main(){
 
-    hashTableClass h1;
-
-    cout << "add student:" << endl;
-    h1.addStudent(97,"Ali");
-    h1.addStudent(98,"Abu");
-    h1.addStudent(194,"May");
-    h1.addStudent(291,"June");
-    h1.addStudent(195,"Akau");
-    h1.addStudent(196,"Ako");
-    h1.addStudent(197,"Atan");
-    h1.display();
-
-    cout << "load student:" <<endl;
-    h1.loadStudent();
-    h1.display();
-
-    cout << "save student:" <<endl;
-    h1.saveStudent();
-    h1.display();
-
-    return 0;
-}
-*/

@@ -25,6 +25,7 @@ int main()
     int studentIdInt;
     string studentIdString;
     string studentName;
+    bool flag;
 
 menuPage1:
     do{
@@ -122,9 +123,6 @@ menuPage1:
             a.delBook(delNo1);
         }
 
-
-
-
         getch();
         system("cls");
         break;
@@ -215,7 +213,7 @@ menuPage1:
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
         cout << "\n\n";
-        cout << "\t\t\tExisting Record That Haven't Been Load Will be Repalced If You Save to File" << endl;
+        cout << "\t\t\tExisting Record That Haven't Been Load Will be Replaced If You Save to File" << endl;
         cout << "\n\t\t\t\t    Are You Sure You Want to Save Now ?(Enter y/n): ";
 
         cin >> inputyn;
@@ -376,9 +374,9 @@ menuPage2:
         cout << "\t\t\t\t\t 1. Add Student \t\t\t\t\t" << endl;
         cout << "\t\t\t\t\t 2. Display All Students \t\t\t\t\t" << endl;
         cout << "\t\t\t\t\t 3. Delete Student \t\t\t\t\t" << endl;
-        cout << "\t\t\t\t\t 4. Search Book Record \t\t\t\t\t" << endl;
-        cout << "\t\t\t\t\t 5. Save Book Record \t\t\t\t\t" << endl;
-        cout << "\t\t\t\t\t 6. Load Book Record \t\t\t\t\t" << endl;
+        cout << "\t\t\t\t\t 4. Search Student Record \t\t\t\t\t" << endl;
+        cout << "\t\t\t\t\t 5. Save Student Record \t\t\t\t\t" << endl;
+        cout << "\t\t\t\t\t 6. Load Student Record \t\t\t\t\t" << endl;
         cout << "\t\t\t\t\t 7. Previous Page \t\t\t\t\t" << endl;
         cout << "\t\t\t\t\t 0. Exit \t\t\t\t\t" << endl;
         cout << "" << endl;
@@ -394,23 +392,19 @@ menuPage2:
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Add New Student ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Add Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n";
 
             cout << "\t\t\t\t\t\t Student ID: ";
             getline(cin, studentIdString);
-            /*
-            if( cin.get() == '\n' ) {
-                continue;
-            }
-            */
+
             cout << "\t\t\t\t\t\t Student Name: ";
             getline(cin, studentName);
 
             for (int i = 0; i < studentIdString.length(); i++) {
                 if(isdigit(studentIdString[i]) == false){
-                   cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
+                   cout << "\n\n\n\t\t\t\t\t Invalid Input! Please enter numeric digits for student ID!";
                    cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
                    getch();
                    goto menuPage2;
@@ -422,86 +416,17 @@ menuPage2:
                 cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
                 getch();
                 goto menuPage2;
-            }else{
+            }else if(studentIdString == "0"){
+                cout << "\n\n\n\t\t\t\t\t Invalid Input! Please enter valid student ID!";
+                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                getch();
+                goto menuPage2;
+            }
+            else{
                 studentIdInt = stoi(studentIdString);
             }
 
-            /*
-            if(isdigit(studentIdInt) == false){
-                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                getch();
-                break;
-            }
-
-
-            if (!(cin >> studentIdInt)) {
-
-                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                break;
-            }
-
-
-            if(studentName.empty()){
-                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                getch();
-                break;
-            }
-
-
-
-            // This code converts from string to number safely.
-            stringstream ss(studentIdString);
-            if (ss >> studentIdInt){
-                cout << "studentIdInt :" << studentIdInt << endl;
-            }
-
-
-            if (!(cin >> studentIdInt)) {
-                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                cin.ignore(10000,'\n');
-                getch();
-                break;
-            }else if(studentName.empty()){
-                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                cin.ignore(10000,'\n');
-                getch();
-                break;
-            }
-
-
-            if (!(cin >> studentIdInt)) {
-                cout << "\n\n\n\t\t\t\t\t Please enter an integer for student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                cin.clear();
-                cin.ignore(10000,'\n');
-                getch();
-                break;
-            }else if(studentName.empty()){
-                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
-                getch();
-                break;
-            }else{
-                continue;
-            }
-
-
-
-            if(studentIdInt == 0){
-                cout << "\n\n\n\t\t\t\t\tInvalid student ID! Please fill in the correct ID." << endl;\
-                getch();
-                break;
-            }
-            */
-
-
             h1.addStudent(studentIdInt,studentName);
-            cout << "\n\n\n\t\t\t\t\tStudent " << studentName << " added successfully!" << endl;
             getch();
             break;
 
@@ -509,7 +434,7 @@ menuPage2:
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Student List ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n";
 
@@ -523,19 +448,19 @@ menuPage2:
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Delete Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Delete Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n\n";
-            cout << "\t\t\t\t    Enter Book ID that you want to delete: ";
+            cout << "\t\t\t\t    Enter the ID of the student record that you want to delete: ";
             cin >> delNo1;
             if(cin.fail()){
                 cin.clear();
                 cin.ignore();
                 cout << "\n\n\n\n";
-                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+                cout << "\t\t\t\t    Invalid Input! Please enter numeric digits only!";
 
             }else{
-                a.delBook(delNo1);
+                h1.deleteStudent(delNo1);
             }
 
             getch();
@@ -546,22 +471,11 @@ menuPage2:
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Edit Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\n";
+            h1.searchStudent(studentIdInt);
             cout << "\n\n";
-            cout << "\t\t\t\t    Enter Book ID that you want to edit: ";
-            cin >> editNo1;
-            if(cin.fail()){
-                cin.clear();
-                cin.ignore();
-                cout << "\n\n\n\n";
-                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
-
-            }else{
-
-            a.editBook(editNo1);
-
-            }
 
             getch();
             system("cls");
@@ -571,17 +485,35 @@ menuPage2:
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n";
-            a.searchBook();
+            cout << "\n\n";
+            cout << "\t\t\tExisting Record That Haven't Been Load Will be Replaced If You Save to File" << endl;
+            cout << "\n\t\t\t\t    Are You Sure You Want to Save Now ?(Enter y/n): ";
+            cin >> inputyn;
+            cin.sync();
+
+            if(inputyn == "y"){
+
+            system("cls");
+            cout << "\n\n\n\n\n";
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n\n";
 
-
-
+            h1.saveStudent();
             getch();
+
+            }else if(inputyn == "n"){
+                system("cls");
+                break;
+            }
+
             system("cls");
             break;
+
+
 
         case '6' :
             system("cls");
@@ -598,20 +530,17 @@ menuPage2:
 
             if(inputyn == "y"){
 
-            for(int i = 1; i< a.size+1; i++ )
-            {
-                a.delBook(i);
-            }
-            a.size = 0;
-
             system("cls");
+            h1.loadStudent();
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Load Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n\n";
 
-            a.loadBook();
+            cout << "\t\t\t\t    Student list loaded successfully!";
+
+
             getch();
             }else if(inputyn == "n"){
                 system("cls");
