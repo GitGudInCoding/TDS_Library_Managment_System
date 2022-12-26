@@ -529,13 +529,11 @@ menuPage2:
                         cout << "...";
                     }
 
-                bool result = h1.searchStudent(studentIdInt);
-
-                if(!result){
-                    cout << " \33[2K \nStudent was not found in the system!" << endl;
+                if(h1.searchStudent(studentIdInt) != -1){
+                    cout << "Student Found!" << endl;
                 }
                 else{
-                    cout << "Student Found!" << endl;
+                    cout << " \33[2K \nStudent was not found in the system!" << endl;
                 }
 
                 cout << "\n\n";
