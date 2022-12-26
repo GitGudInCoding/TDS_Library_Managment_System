@@ -507,7 +507,13 @@ menuPage2:
         case '4' :{
             do{
                 system("cls");
-                cout << "\n\n\n\n\n";
+                cout << "\Loading";
+                for(int a = 1; a < 6; a++)
+                    {
+                        Sleep(500);
+                        cout << "...";
+                    }
+                cout << "\33[2K\n\n\n\n";
                 cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
                 cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
                 cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
