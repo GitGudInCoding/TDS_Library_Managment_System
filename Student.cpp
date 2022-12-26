@@ -159,6 +159,7 @@ void hashTableClass::display(){                                                 
                 cout << "\t" << hashTable[i] -> id ;
                 cout << "\t\t" << hashTable[i] -> name ;
                 cout << "\n" ;
+
                 student * ptr = hashTable[i];
                 while(ptr->next != NULL){
                 ptr  = ptr->next;
