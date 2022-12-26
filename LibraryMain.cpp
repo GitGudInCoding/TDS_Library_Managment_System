@@ -9,6 +9,8 @@
 
 using namespace std;
 
+char opt4;
+
 int main()
 {
     Book a; // Create object of Book class
@@ -55,7 +57,7 @@ menuPage1:
 
     switch(choice)
     {
-    case '1' :
+    case '1' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -78,8 +80,8 @@ menuPage1:
 
         a.addBook(bname,bau,bpu);
         break;
-
-    case '2' :
+    }
+    case '2' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -103,8 +105,8 @@ menuPage1:
         getch();
         system("cls");
         break;
-
-    case '3' :
+    }
+    case '3' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -126,8 +128,8 @@ menuPage1:
         getch();
         system("cls");
         break;
-
-    case '4' :
+    }
+    case '4' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -151,8 +153,8 @@ menuPage1:
         getch();
         system("cls");
         break;
-
-    case '5' :
+    }
+    case '5' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -167,8 +169,8 @@ menuPage1:
         getch();
         system("cls");
         break;
-
-    case '6' :
+    }
+    case '6' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -205,8 +207,8 @@ menuPage1:
 
         system("cls");
         break;
-
-    case '7' :
+    }
+    case '7' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -238,8 +240,8 @@ menuPage1:
 
         system("cls");
         break;
-
-    case '8' :
+    }
+    case '8' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -300,8 +302,8 @@ menuPage1:
             break;
         }
         break;
-
-    case 'a' :
+    }
+    case 'a' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -325,10 +327,10 @@ menuPage1:
         getch();
         system("cls");
         break;
+    }
 
 
-
-    case 'b' :
+    case 'b' :{
         system("cls");
         cout << "\n\n\n\n\n";
         cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
@@ -353,7 +355,7 @@ menuPage1:
         system("cls");
         break;
 
-
+    }
 
 
     /*
@@ -372,10 +374,10 @@ menuPage1:
         break;
     */
 
-    case'9':
+    case'9':{
         goto menuPage2;
-
-        }
+    }
+    }
     }while(!exit);{
     system("cls");
     cout << "\n\n\n\n\n\n\n\n\n\n";
@@ -410,7 +412,7 @@ menuPage2:
 
     switch(choice){
 
-        case '1' :
+        case '1' :{
 
             system("cls");
             cout << "\n\n\n\n\n";
@@ -452,22 +454,33 @@ menuPage2:
             h1.addStudent(studentIdInt,studentName);
             getch();
             break;
+        }
 
-        case '2' :
+        case '2' :{
             system("cls");
-            cout << "\n\n\n\n\n";
+            cout << "\Loading";
+                for(int a = 1; a < 6; a++)
+                    {
+                        Sleep(500);
+                        cout << "...";
+                    }
+            cout << "\33[2K\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\n -------------------------------------";
+            cout << "\n ||     ID     ||       Name        ||";
+            cout << "\n -------------------------------------";
             cout << "\n";
 
-
             h1.display();
+            cout << "\n\n\nPress any button to continue..............";
             getch();
             system("cls");
             break;
+        }
 
-        case '3' :
+        case '3' :{
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -489,22 +502,54 @@ menuPage2:
             getch();
             system("cls");
             break;
+        }
 
-        case '4' :
-            system("cls");
-            cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n";
-            h1.searchStudent(studentIdInt);
-            cout << "\n\n";
+        case '4' :{
+            do{
+                system("cls");
+                cout << "\n\n\n\n\n";
+                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+                cout << "\n";
+                cout << "Please enter student ID: " ;
+                cin >> studentIdInt;
 
-            getch();
-            system("cls");
+                cout << "\nSearching";
+                for(int a = 1; a < 6; a++)
+                    {
+                        Sleep(500);
+                        cout << "...";
+                    }
+
+                bool result = h1.searchStudent(studentIdInt);
+
+                if(!result){
+                    cout << " \33[2K \nStudent was not found in the system!" << endl;
+                }
+                else{
+                    cout << "Student Found!" << endl;
+                }
+
+                cout << "\n\n";
+
+                cout << "Do you want to search for another student?(y/n): " << endl;
+                cin >> opt4;
+
+                if(opt4 == 'n' || opt4 == 'N'){
+                    cout << "\nReturning to Menu";
+                    for(int a = 1; a < 6; a++)
+                    {
+                        Sleep(500);
+                        cout << "...";
+                    }
+                    goto menuPage2;
+                }
+            }while(opt4 == 'y' || opt4 == 'Y');
             break;
+        }
 
-        case '5' :
+        case '5' :{
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -535,10 +580,11 @@ menuPage2:
 
             system("cls");
             break;
+        }
 
 
 
-        case '6' :
+        case '6' :{
             system("cls");
             cout << "\n\n\n\n\n";
             cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
@@ -572,16 +618,19 @@ menuPage2:
 
             system("cls");
             break;
+        }
 
-        case '7' :
+        case '7' :{
             system("cls");
             goto menuPage1;
             break;
+        }
 
 
-        case '0' :
+        case '0' :{
             exit = true;
             break;
+        }
         }
     }while(!exit);{
     system("cls");

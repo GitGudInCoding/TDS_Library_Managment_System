@@ -147,24 +147,24 @@ void hashTableClass::deleteStudent(int id){
 
 void hashTableClass::display(){                                                             //Display contents of the hash table
 
-    student * tempPtr;                                                                 //Declare a temporary pointer to traverse the linked list
+    int counter;
 
-
-    cout << "Display Student:" << endl;
-
-    for(int i=0; i<10; i++){                                                            //Use a for loop to traverse the entire hash table
-        cout << "Index " << i << endl;
-        tempPtr = hashTable[i];                                                         // Let the temporary pointer point to the first index of the hash table
-        cout << tempPtr -> id <<endl;
-        cout << tempPtr -> name <<endl;
-
-        while(tempPtr -> next != NULL){                                                    //Checking if the bucket under that index have extra student nodes
-            tempPtr = tempPtr -> next;                                                  //If yes, use the temporary pointer to traverse the linked list
-            cout << tempPtr -> id <<endl;
-            cout << tempPtr -> name <<endl;
-        }
-
+    if(HASHTABLESIZE == 0){
+        cout << "No data!" << endl;
     }
+    else{
+        for(int i = 1; i < HASHTABLESIZE; i++){
+        //while(hashTable[i] ->name != NULL){
+            if(hashTable[i] -> id != 0){
+                cout << "\t" << hashTable[i] -> id ;
+                cout << "\t\t" << hashTable[i] -> name ;
+                cout << "\n" ;
+                counter++;
+            }
+        }
+    }
+
+    cout << "\n Number of student = " << counter << endl;
 
 }
 
@@ -227,14 +227,18 @@ void hashTableClass::loadStudent(){
 
 hashTableClass::searchStudent(int id){
 
-    int index = hashFunction(id);
+    int i = hashFunction(id);
+    bool foundStudent;
 
-    if(hashTable[index] -> id == id){
-        cout << "Student found at " << index << "th place." << endl;
-        cout << "Student ID: " << hashTable[index] -> id << endl;
-        cout << "Student Name: " << hashTable[index] -> name << endl;
-    }else{
-        student * ptr = hashTable[index];
+    if(hashTable[i] -> id == id){
+        cout << "\33[2K \n-------- Student Information -------" << endl;
+        cout << "\n";
+        cout << "Student ID: " << hashTable[i] -> id << endl;
+        cout << "Student Name: " << hashTable[i] -> name << endl;
+    }
+    else{
+        foundStudent = false;
+        student * ptr = hashTable[i];
         while(ptr->next != NULL){
             ptr  = ptr->next;
         }
