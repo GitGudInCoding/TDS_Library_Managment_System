@@ -29,6 +29,7 @@ public:
     void saveStudent();
     void loadStudent();
     void searchStudent(int id);
+    void checkStudentId(int id);
 
 };
 
