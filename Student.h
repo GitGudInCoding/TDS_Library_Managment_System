@@ -28,7 +28,7 @@ public:
     void display();
     void saveStudent();
     void loadStudent();
-    searchStudent(int id);
+    void searchStudent(int id);
 
 };
 
