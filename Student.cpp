@@ -292,11 +292,11 @@ void hashTableClass::loadStudent(){
     system("cls");
 }
 
-/*
+
 void hashTableClass::checkStudentId(int id){
 
     cout << "check student id is " << id <<endl;
 }
-*/
+
 
 

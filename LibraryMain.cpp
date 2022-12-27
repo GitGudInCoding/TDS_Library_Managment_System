@@ -19,7 +19,7 @@ int main()
     system("cls");
     static char choice;
     bool exit = false;
-    int delNo1,editNo1,sid;
+    int delNo1,editNo1,sid,bid;
     string bname,bau,bpu,inputyn;
 
     //temporary variables for class student & borrow and return function
@@ -318,7 +318,31 @@ menuPage1:
             cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
             cout << "\n\n";
 
-            a.borrowBook();
+            cout << "\t\t\t\t    Enter Student ID: ";
+            cin >> sid;
+
+            if(cin.fail()){
+                cin.clear();
+                cin.ignore();
+                cout << "\n\n\n\n";
+                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+                break;
+            }
+
+            h1.checkStudentId(sid);
+
+            cout << "\t\t\t\t    Enter Book ID that you want to borrow: ";
+            cin >> bid;
+
+            if(cin.fail()){
+                cin.clear();
+                cin.ignore();
+                cout << "\n\n\n\n";
+                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+                break;
+            }
+
+            a.borrowBook(bid,sid);
 
             getch();
             system("cls");

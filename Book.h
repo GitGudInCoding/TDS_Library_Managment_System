@@ -42,7 +42,7 @@ public:
     void saveBook();
     void sortBook();
     void sortID();
-    void borrowBook();
+    void borrowBook(int bid,int sid);
     void returnBook();
     void sortAuthor();
 

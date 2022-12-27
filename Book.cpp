@@ -536,11 +536,14 @@ void Book::sortID(){
 
 }
 
-void Book::borrowBook(){
+void Book::borrowBook(int bid,int sid){
 
-    int bid;
-    int sid;
+    int bid1;
+    int sid1;
     char response;
+
+     bid1 = bid;
+     sid1 = sid;
 
     disp = head;
 
@@ -551,27 +554,15 @@ void Book::borrowBook(){
          return;
     }
 
-    cout << "\t\t\t\t    Enter Student ID: ";
-    cin >> sid;
 
-    if(cin.fail()){
-        cin.clear();
-        cin.ignore();
-        cout << "\n\n\n\n";
-        cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
-        return;
-    }
 
-    cout << "\t\t\t\t    Enter Book ID that you want to borrow: ";
-    cin >> bid;
 
-    if(cin.fail()){
-        cin.clear();
-        cin.ignore();
-        cout << "\n\n\n\n";
-        cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
-        return;
-    }
+
+
+
+
+
+
 
     //Enter a function to check if the student ID is in the hash table
     //checkStudentId();
