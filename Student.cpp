@@ -148,7 +148,8 @@ void hashTableClass::deleteStudent(int id){
 void hashTableClass::display(){                                                             //Display contents of the hash table
 
     int counter;
-    /*int i = hashFunction(id);
+    int c = 1;
+    //int index = hashFunction(id);
 
     /*student * ptr = hashTable[i];
 
@@ -172,29 +173,37 @@ void hashTableClass::display(){                                                 
 
     student * ptr;
 
-    cout << "Display Student:" << endl;
-
     for(int i = 1; i < HASHTABLESIZE; i++){
-        cout << "\t" << hashTable[i] -> id;
-        cout << "\t\t" << hashTable[i] -> name;
-        cout << "\n" ;
+        if(hashTable[i] -> id != 0 && hashTable[i] != NULL){
+            cout << "\t" << c++;
+            cout << "\t\t" << hashTable[i] -> id;
+            cout << "\t\t" << hashTable[i] -> name;
+            cout << "\n" ;
 
-        counter++;
+            counter++;
 
-        ptr = hashTable[i];
+            ptr = hashTable[i];
 
         /*cout << "\t" << ptr -> id;
         cout << "\t\t" << ptr -> name;
         cout << "\n" ;*/
 
-        if(ptr -> next != NULL){
-            ptr = ptr -> next;
-            cout << "\t" << ptr -> id;
-            cout << "\t\t" << ptr -> name;
-            cout << "\n" ;
+            if(ptr -> next != NULL){
+                ptr = ptr -> next;
+                cout << "\t" << c++;
+                cout << "\t\t" << ptr -> id;
+                cout << "\t\t" << ptr -> name;
+                cout << "\n" ;
+                counter++;
+            }
         }
     }
-    cout << "\n Number of student = " << counter << endl;
+    if(counter == 0){
+        cout << "\n No student in the list" << endl;
+    }
+    else{
+        cout << "\n Number of student = " << counter << endl;
+    }
 }
 
 
