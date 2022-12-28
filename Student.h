@@ -8,9 +8,9 @@ class hashTableClass{
 
 private:
 
-    static const int HASHTABLESIZE = 97;
+    static const int HASHTABLESIZE = 101;  //Declaring the hash table size to a prime number can decrease the chances of collision
 
-    struct student{
+    struct student{                         //Structure named student used as nodes for hash table
         int id;
         string name;
         student * next;
@@ -29,7 +29,7 @@ public:
     void saveStudent();
     void loadStudent();
     void searchStudent(int id);
-    void checkStudentId(int id);
+    bool checkStudentId(int id);
 
 };
 

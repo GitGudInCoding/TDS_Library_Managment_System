@@ -32,9 +32,9 @@ menuPage1:
     do{
     system("cls");
     cout << "\n\n\n\n\n";
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷ LIBRARY MANAGEMENT SYSTEM ÷÷÷÷÷÷÷÷÷÷÷" << endl;
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+    cout << "\t\t\t\t    =========================================================" << endl;
+    cout << "\t\t\t\t    =============== LIBRARY MANAGEMENT SYSTEM ===============" << endl;
+    cout << "\t\t\t\t    =========================================================" << endl;
     cout << "\n" << endl;
     cout << "\t\t\t\t\t 1. Add Book Record \t\t\t\t\t" << endl;
     cout << "\t\t\t\t\t 2. Display All Book Records \t\t\t\t\t" << endl;
@@ -59,16 +59,16 @@ menuPage1:
         case '1' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Add New Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ===================== Add New Book ======================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
             cout << "\n";
-            cout << "\t\t\t\t\t\t Book ID: " << a.size+1 << endl;
-            cout << "\t\t\t\t\t\t Book Name: ";
+            cout << "\t\t\t\t\t Book ID: " << a.size+1 << endl;
+            cout << "\t\t\t\t\t Book Name: ";
             getline(cin,bname);
-            cout << "\t\t\t\t\t\t Book Author: ";
+            cout << "\t\t\t\t\t Book Author: ";
             getline(cin,bau);
-            cout << "\t\t\t\t\t\t Book Publisher: ";
+            cout << "\t\t\t\t\t Book Publisher: ";
             getline(cin,bpu);
 
             if(bname.empty() || bau.empty() || bpu.empty() ){
@@ -84,9 +84,9 @@ menuPage1:
         case '2' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ All Book Records ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== All Book Records ====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
             cout << "\n";
 
             gotoxy(5,10);
@@ -110,10 +110,10 @@ menuPage1:
         case '3' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Delete Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Delete Book Record ==================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\t\t    Enter Book ID that you want to delete: ";
             cin >> delNo1;
             if(cin.fail()){
@@ -134,10 +134,10 @@ menuPage1:
         case '4' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Edit Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Edit Book Record ====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\t\t    Enter Book ID that you want to edit: ";
             cin >> editNo1;
             if(cin.fail()){
@@ -160,9 +160,9 @@ menuPage1:
         case '5' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Search Book Record ==================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
             cout << "\n";
             a.searchBook();
             cout << "\n\n";
@@ -177,10 +177,10 @@ menuPage1:
         case '6' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Load Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Load Book Record ====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\tRecent Record That Haven't Been Saved Will No Longer Exist If You Load from File" << endl;
             cout << "\n\t\t\t\t    Are You Sure You Want to Load Now ?(Enter y/n): ";
 
@@ -197,10 +197,10 @@ menuPage1:
 
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Load Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Load Book Record ====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
 
             a.loadBook();
             getch();
@@ -216,10 +216,10 @@ menuPage1:
         case '7' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Save Book Record ====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\tExisting Record That Haven't Been Load Will be Replaced If You Save to File" << endl;
             cout << "\n\t\t\t\t    Are You Sure You Want to Save Now ?(Enter y/n): ";
 
@@ -230,10 +230,10 @@ menuPage1:
 
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    =================== Save Book Record ====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
 
             a.saveBook();
             getch();
@@ -250,10 +250,10 @@ menuPage1:
         case '8' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ======================= Sort Book =======================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\t\t\t 1. Sort by Name \t\t\t\t\t" << endl;
             cout << "\t\t\t\t\t 2. Sort by Author \t\t\t\t\t" << endl;
             cout << "\t\t\t\t\t 3. Sort by ID \t\t\t\t\t" << endl;
@@ -267,10 +267,10 @@ menuPage1:
               case '1':
                 system("cls");
                 cout << "\n\n\n\n\n";
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book Name ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\n\n";
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ===================== Sort Book Name ====================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\n";
                 a.sortBook();
                 getch();
                 system("cls");
@@ -279,10 +279,10 @@ menuPage1:
               case '2' :
                 system("cls");
                 cout << "\n\n\n\n\n";
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book Author ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\n\n";
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ==================== Sort Book Author ===================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\n";
                 a.sortAuthor();
 
                 getch();
@@ -293,10 +293,10 @@ menuPage1:
               case '3':
                   system("cls");
                 cout << "\n\n\n\n\n";
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Sort Book ID ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\n\n";
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ===================== Sort Book ID ======================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\n";
                 a.sortID();
                 getch();
                 system("cls");
@@ -313,32 +313,42 @@ menuPage1:
         case 'a' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Borrow Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ====================== Borrow Book ======================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
 
-            cout << "\t\t\t\t    Enter Student ID: ";
+            cout << "\t\t\t\t\t Enter Student ID: ";
             cin >> sid;
 
             if(cin.fail()){
                 cin.clear();
                 cin.ignore();
-                cout << "\n\n\n\n";
-                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+                cout << "\n\n\n";
+                cout << "\t\t\t\t\t Invalid Input! Please Enter Number Only! . . . "<< endl;
+                cout << "\t\t\t\t\t Press any button to return to main menu...";
+                getch();
+                system("cls");
                 break;
             }
 
-            h1.checkStudentId(sid);
+            if(h1.checkStudentId(sid) == false){
+                getch();
+                system("cls");
+                break;
+            }
 
-            cout << "\t\t\t\t    Enter Book ID that you want to borrow: ";
+            cout << "\t\t\t\t\t Enter Book ID that you want to borrow: ";
             cin >> bid;
 
             if(cin.fail()){
                 cin.clear();
                 cin.ignore();
-                cout << "\n\n\n\n";
-                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+                cout << "\n\n\n";
+                cout << "\t\t\t\t\t Invalid Input! Please Enter Number Only! . . . "<<endl;
+                cout << "\t\t\t\t\t Press any button to return to main menu...";
+                getch();
+                system("cls");
                 break;
             }
 
@@ -351,31 +361,15 @@ menuPage1:
 
 
         case 'b' :{
-            system("cls");
-            cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
-            cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Return Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
-            cout << "\t\t\t\t   ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ " << endl;
-            cout << "\n\n";
-            cout << "\t\t\t\t    Enter Student ID: ";
-            cin >> sid;
-            if(cin.fail()){
-                cin.clear();
-                cin.ignore();
-                cout << "\n\n\n\n";
-                cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
-
-            }else{
 
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Return Book ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
-            a.returnBook();
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ====================== Return Book ======================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
 
-            }
+            a.returnBook(bid);
 
             getch();
             system("cls");
@@ -389,10 +383,10 @@ menuPage1:
         }
     }while(!exit);{
     system("cls");
-    cout << "\n\n\n\n\n\n\n\n\n\n";
-     cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷ LIBRARY MANAGEMENT SYSTEM ÷÷÷÷÷÷÷÷÷÷÷" << endl;
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+    cout << "\n\n\n\n\n";
+    cout << "\t\t\t\t    =========================================================" << endl;
+    cout << "\t\t\t\t    =============== LIBRARY MANAGEMENT SYSTEM ===============" << endl;
+    cout << "\t\t\t\t    =========================================================" << endl;
     cout << "\n" << endl;
     cout<<"\t \t \t \t \t \t See You Next Time! \n\n\n\n"<<endl;
     }
@@ -401,9 +395,9 @@ menuPage2:
     do{
         system("cls");
         cout << "\n\n\n\n\n";
-        cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-        cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷ LIBRARY MANAGEMENT SYSTEM ÷÷÷÷÷÷÷÷÷÷÷" << endl;
-        cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+        cout << "\t\t\t\t    =========================================================" << endl;
+        cout << "\t\t\t\t    =============== LIBRARY MANAGEMENT SYSTEM ===============" << endl;
+        cout << "\t\t\t\t    =========================================================" << endl;
         cout << "\n" << endl;
         cout << "\t\t\t\t\t 1. Add Student \t\t\t\t\t" << endl;
         cout << "\t\t\t\t\t 2. Display All Students \t\t\t\t\t" << endl;
@@ -425,34 +419,37 @@ menuPage2:
 
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Add Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ================== Add Student Record ===================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
             cout << "\n";
 
-            cout << "\t\t\t\t\t\t Student ID: ";
+            cout << "\t\t\t\t\t Student ID: ";
             getline(cin, studentIdString);
 
-            cout << "\t\t\t\t\t\t Student Name: ";
+            cout << "\t\t\t\t\t Student Name: ";
             getline(cin, studentName);
 
             for (int i = 0; i < studentIdString.length(); i++) {
                 if(isdigit(studentIdString[i]) == false){
-                   cout << "\n\n\n\t\t\t\t\t Invalid Input! Please enter numeric digits for student ID!";
-                   cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                   cout << "\n\n\n";
+                   cout << "\t\t\t\t\t Invalid Input! Please enter numeric digits for student ID!"<<endl;
+                   cout << "\t\t\t\t\t Press any button to return to main menu...";
                    getch();
                    goto menuPage2;
                 }
             }
 
             if(studentName.empty()){
-                cout << "\n\n\n\t\t\t\t\t Please fill in all of the blanks!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                cout << "\n\n\n";
+                cout << "\t\t\t\t\t Please fill in all of the blanks!"<<endl;
+                cout << "\t\t\t\t\t Press any button to return to main menu...";
                 getch();
                 goto menuPage2;
             }else if(studentIdString == "0"){
-                cout << "\n\n\n\t\t\t\t\t Invalid Input! Please enter valid student ID!";
-                cout << "\n\n\n\t\t\t\t\t Press any button to return to main menu...";
+                cout << "\n\n\n";
+                cout << "\t\t\t\t\t Invalid Input! Please enter valid student ID!"<<endl;
+                cout << "\t\t\t\t\t Press any button to return to main menu...";
                 getch();
                 goto menuPage2;
             }
@@ -474,9 +471,9 @@ menuPage2:
                         cout << "...";
                     }
             cout << "\33[2K\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ==================== Student Record =====================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
             cout << "\n ----------------------------------------------------------------------";
             cout << "\n ||     NO     ||     INDEX     ||      ID      ||       Name        ||";
             cout << "\n ----------------------------------------------------------------------";
@@ -492,17 +489,18 @@ menuPage2:
         case '3' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Delete Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
-            cout << "\t\t\t\t    Enter the ID of the student record that you want to delete: ";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ================= Delete Student Record =================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
+            cout << "\t\t\t\t\t Enter the ID of the student record that you want to delete: ";
             cin >> delNo1;
             if(cin.fail()){
                 cin.clear();
                 cin.ignore();
                 cout << "\n\n\n\n";
-                cout << "\t\t\t\t    Invalid Input! Please enter numeric digits only!";
+                cout << "\t\t\t\t\t Invalid Input! Please enter numeric digits only."<<endl;
+                cout << "\t\t\t\t\t Press any button to return to main menu...";
 
             }else{
                 h1.deleteStudent(delNo1);
@@ -524,9 +522,9 @@ menuPage2:
             do{
                 system("cls");
                 cout << "\33[2K\n\n\n\n";
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Search Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-                cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ================= Search Student Record =================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
                 cout << "\n";
                 cout << "Please enter student ID: " ;
                 cin >> studentIdInt;
@@ -561,10 +559,10 @@ menuPage2:
         case '5' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ================== Save Student Record ==================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\tExisting Record That Haven't Been Load Will be Replaced If You Save to File" << endl;
             cout << "\n\t\t\t\t    Are You Sure You Want to Save Now ?(Enter y/n): ";
             cin >> inputyn;
@@ -574,10 +572,10 @@ menuPage2:
 
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Save Student Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ================== Save Student Record ==================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
 
             h1.saveStudent();
             getch();
@@ -596,10 +594,10 @@ menuPage2:
         case '6' :{
             system("cls");
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Load Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ================== Load Student Record ==================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
             cout << "\t\t\tRecent Record That Haven't Been Saved Will No Longer Exist If You Load from File" << endl;
             cout << "\n\t\t\t\t    Are You Sure You Want to Load Now ?(Enter y/n): ";
 
@@ -611,12 +609,12 @@ menuPage2:
             system("cls");
             h1.loadStudent();
             cout << "\n\n\n\n\n";
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷ Load Book Record ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-            cout << "\n\n";
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\t\t\t\t    ================== Load Student Record ==================" << endl;
+            cout << "\t\t\t\t    =========================================================" << endl;
+            cout << "\n";
 
-            cout << "\t\t\t\t    Student list loaded successfully!";
+            cout << "\t\t\t\t\t Student list loaded successfully!";
 
 
             getch();
@@ -643,10 +641,10 @@ menuPage2:
         }
     }while(!exit);{
     system("cls");
-    cout << "\n\n\n\n\n\n\n\n\n\n";
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷ LIBRARY MANAGEMENT SYSTEM ÷÷÷÷÷÷÷÷÷÷÷" << endl;
-    cout << "\t\t\t\t    ÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷÷" << endl;
+    cout << "\n\n\n\n\n";
+    cout << "\t\t\t\t    =========================================================" << endl;
+    cout << "\t\t\t\t    =============== LIBRARY MANAGEMENT SYSTEM ===============" << endl;
+    cout << "\t\t\t\t    =========================================================" << endl;
     cout << "\n" << endl;
     cout<<"\t \t \t \t \t \t See You Next Time! \n\n\n\n"<<endl;
     }

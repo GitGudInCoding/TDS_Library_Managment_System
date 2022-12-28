@@ -67,7 +67,7 @@ void Book::addBook(string bname1, string bau1, string bpu1)
         temp = newPtr;
     }
 
-    cout << "\n";
+    cout << "\n\n\n";
     cout << "\t\t\t\t\t Book Added Successfully! . . . ";
     getch();
     system("cls");
@@ -79,8 +79,8 @@ void Book::delBook(int delNo)
 
     if(head==NULL)
     {
-        cout << "\n\n";
-        cout<<"\t\t\t\t\t\t Book Record is Empty!\n";
+        cout << "\n\n\n";
+        cout << "\t\t\t\t\t\t Book Record is Empty!\n";
     }
     else
     {
@@ -548,35 +548,20 @@ void Book::borrowBook(int bid,int sid){
     disp = head;
 
     if(head==NULL){
-         cout << "\n\n";
-         cout << "\n";
-         cout<<"\t\t\t\t    Book Record is Empty!\n";
+         cout << "\n\n\n";
+         cout<<  "\t\t\t\t\t Book Record is Empty!\n";
          return;
     }
 
-
-
-
-
-
-
-
-
-
-
-    //Enter a function to check if the student ID is in the hash table
-    //checkStudentId();
-
     while(disp != NULL){
 
-        if(bid == disp -> bookID && disp->stat == false){
-            cout << "\n\n";
-            cout << "\n";
-            cout << "\t\t\t\t    The book is currently unavailable as it is borrowed by other student.";
+        if(disp->stat == false && bid == disp -> bookID  ){
+            cout << "\n\n\n";
+            cout << "\t\t\t\t    The book is currently unavailable as it is borrowed by other student."<< endl;
             cout << "\t\t\t\t    Press any button to return to main menu...";
             return;
 
-        }else if(bid == disp -> bookID && disp->stat == true){
+        }else if(disp->stat == true && bid == disp -> bookID  ){
             cout <<"\n";
             cout << "\t\t\t\t    The Book Details" << endl;
             cout << "\t\t\t\t    Book ID: " << disp -> bookID << endl;
@@ -595,9 +580,9 @@ void Book::borrowBook(int bid,int sid){
                 disp->stat = false;
                 disp->stuID = sid;
                 cout << "\n\n\n\n\n";
-                cout << "\t\t\t\t   €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€" << endl;
-                cout << "\t\t\t\t   €€€€€€€€€€€€€€€€€€ Borrow Book €€€€€€€€€€€€€€€€€" << endl;
-                cout << "\t\t\t\t   €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ====================== Borrow Book ======================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
                 cout << "\n\n";
                 cout << "\n";
                 cout << "\t\t\t\t    Book borrowed successfully!" << endl;
@@ -606,9 +591,9 @@ void Book::borrowBook(int bid,int sid){
             }else{
                 system("cls");
                 cout << "\n\n\n\n\n";
-                cout << "\t\t\t\t   €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€" << endl;
-                cout << "\t\t\t\t   €€€€€€€€€€€€€€€€€€ Borrow Book €€€€€€€€€€€€€€€€€" << endl;
-                cout << "\t\t\t\t   €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ====================== Borrow Book ======================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
                 cout << "\n\n";
                 cout << "\n";
                 cout << "\t\t\t\t    Book was not borrowed..."<< endl;
@@ -616,81 +601,105 @@ void Book::borrowBook(int bid,int sid){
                 return;
                }
         }else{
-            cout << "\n\n";
-            cout << "\n";
-            cout <<"\t\t\t\t    The book does not exist in the system."<< endl;
-            cout <<"\t\t\t\t    Press any button to return to main menu...";
-            return;
+
         }
         disp = disp -> next;
+
     }
+
+    cout << "\n\n";
+    cout << "\n";
+    cout <<"\t\t\t\t    The book does not exist in the system."<< endl;
+    cout <<"\t\t\t\t    Press any button to return to main menu...";
+    return;
 
 }
 
 
-void Book::returnBook()
-{
-    system("cls");
-    if(head==NULL)
-    {
-         cout << "\n";
-         cout<<"Book Record is Empty!\n";
-         getch();
-         system("cls");
-    }
-    else
-    {
-        int bid;
-        int sid;
-        disp = head;
-        cout << "Enter Book ID that you want to return: ";
-        cin >> bid;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore();
-            cout << "\n\n\n\n";
-            cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+void Book::returnBook(int bid){
 
+    int bid1;
+    char response;
+    bid1 = bid;
+
+    disp = head;
+
+    if(head == NULL){
+         cout << "\n\n";
+         cout << "\n";
+         cout<<"\t\t\t\t    Book Record is Empty!\n";
+         return;
+    }
+
+    cout << "Enter Book ID that you want to return: ";
+    cin >> bid;
+
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore();
+        cout << "\n\n\n\n";
+        cout << "\t\t\t\t    Invalid Input! Please Enter Number Only! . . . ";
+        return;
+    }
+
+    while(disp != NULL){
+
+        if(disp->stat == true && bid == disp -> bookID  ){
+            cout << "\n\n";
+            cout << "\n";
+            cout << "\t\t\t\t    The book cannot be returned as it is not borrowed by any student."<< endl;
+            cout << "\t\t\t\t    Press any button to return to main menu...";
+            return;
+
+        }else if(disp->stat == false && bid == disp -> bookID  ){
+            cout <<"\n";
+            cout << "\t\t\t\t    The Book Details" << endl;
+            cout << "\t\t\t\t    Book ID: " << disp -> bookID << endl;
+            cout << "\t\t\t\t    Book Name:" << disp -> bookName << endl;
+            cout << "\t\t\t\t    Book Author:" << disp -> auth << endl;
+            cout << "\t\t\t\t    Book Publisher:" << disp-> publ << endl;
+            cout << "\t\t\t\t    Book Status:" << getStatus() << endl;
+            cout << "\t\t\t\t    Student ID:" << disp->stuID <<endl;
+
+            cout <<"\n";
+            cout << "\t\t\t\t   Do you want to return book(y/n): ";
+            cin >> response;
+
+            if (response =='y'){
+                system("cls");
+                disp->stat = true;
+                disp->stuID = NULL;
+                cout << "\n\n\n\n\n";
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ====================== Return Book ======================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\n\n\n";
+                cout << "\t\t\t\t    Book returned successfully!" << endl;
+                cout << "\t\t\t\t    Press any button to return to main menu...";
+                return;
+            }else{
+                system("cls");
+                cout << "\n\n\n\n\n";
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\t\t\t\t    ====================== Return Book ======================" << endl;
+                cout << "\t\t\t\t    =========================================================" << endl;
+                cout << "\n\n\n";
+                cout << "\t\t\t\t    Book was not returned..."<< endl;
+                cout << "\t\t\t\t    Press any button to return to main menu...";
+                return;
+               }
         }else{
 
-        while(disp != NULL){
-                if(bid == disp -> bookID && disp->stat == true){
-                    cout << "The book is still available as it is no borrowed by other student." << endl;
-                }
-
-                if(bid == disp -> bookID && disp->stat == false){
-                cout << "The Book Details" << endl;
-                   cout << "Book ID: " << disp -> bookID << endl;
-                   cout << "Book Name:" << disp -> bookName << endl;
-                   cout << "Book Author:" << disp -> auth << endl;
-                   cout << "Book Publisher:" << disp-> publ << endl;
-                   cout << "Book Status:" << getStatus() << endl;
-                if (disp->stuID =sid){
-                   cout << " Returned Student ID:" << disp-> stuID <<endl;
-            }
-
-
-                    char response;
-                    cout <<"\n";
-                    cout << "Are you sure want to return book(y/n): ";
-                    cin >> response;
-
-                if (response =='y'){
-                    disp->stat = true;
-                    cout << "\n";
-                    cout << "Return successful..";
-                    break;
-                }
-               else {
-                    cout << "Return canceled..";
-                    break;
-                   }
-                }
-                 disp = disp -> next;
-
-            }
         }
+        disp = disp -> next;
+
     }
+
+    cout << "\n\n";
+    cout << "\n";
+    cout <<"\t\t\t\t    The book does not exist in the system."<< endl;
+    cout <<"\t\t\t\t    Press any button to return to main menu...";
+    return;
 }
 
 int Book::getSize(){
