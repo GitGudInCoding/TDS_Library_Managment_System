@@ -631,7 +631,7 @@ void Book::returnBook(int bid){
          return;
     }
 
-    cout << "Enter Book ID that you want to return: ";
+    cout << "\t\t\t\t    Enter Book ID that you want to return: ";
     cin >> bid;
 
     if(cin.fail()){
@@ -715,7 +715,6 @@ int Book::getSize(){
     return gs;
     }
 }
-
 
 
 
