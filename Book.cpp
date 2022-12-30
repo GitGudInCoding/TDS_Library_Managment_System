@@ -178,13 +178,13 @@ void Book::editBook(int editNo)
             if(editNo == edip -> bookID){
                 string bname1,bau1,bpu1;
                 cout << "\n";
-                cout << "Book ID: " << edip -> bookID  << endl;
-                cout << "Book Name: ";
+                cout << "\t\t\t\t    Book ID: " << edip -> bookID  << endl;
+                cout << "\t\t\t\t    Book Name: ";
                 cin.ignore();
                 getline(cin,bname1);
-                cout << "Book Author: ";
+                cout << "\t\t\t\t    Book Author: ";
                 getline(cin,bau1);
-                cout << "Book Publisher: ";
+                cout << "\t\t\t\t    Book Publisher: ";
                 getline(cin,bpu1);
 
                 if(bname1.empty() || bau1.empty() || bpu1.empty() ){
@@ -715,7 +715,6 @@ int Book::getSize(){
     return gs;
     }
 }
-
 
 
 
