@@ -259,6 +259,8 @@ menuPage1:
             cout << "\t\t\t\t\t 3. Sort by ID \t\t\t\t\t" << endl;
             cout << "\t\t\t\t\t 4. Back to Menu \t\t\t\t\t" << endl;
             char c;
+            cout << "\n";
+            cout << "\t\t\t\t\t Enter Your Selection: ";
             cin >> c;
             cin.sync();
 
@@ -658,5 +660,4 @@ menuPage2:
     cout<<"\t \t \t \t \t \t See You Next Time! \n\n\n\n"<<endl;
     }
 }
-
 
