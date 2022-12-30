@@ -17,11 +17,12 @@ private:
 
     };
 
-    student * hashTable[HASHTABLESIZE]; //Creates a pointer that points to students with the size of HASHTABLESIZE
+    student * hashTable[HASHTABLESIZE]; //Creates an array with the size of HASHTABLESIZE that contain pointers that points to student
 
 public:
 
     hashTableClass(); //Constructor
+    ~hashTableClass();
     int hashFunction(int key);
     void addStudent (int id, string name);
     void deleteStudent (int id);

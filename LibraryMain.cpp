@@ -9,7 +9,7 @@
 
 using namespace std;
 
-char opt4;
+
 
 int main()
 {
@@ -27,6 +27,7 @@ int main()
     int studentIdInt;
     string studentIdString;
     string studentName;
+    char opt4;
 
 menuPage1:
     do{
@@ -484,7 +485,7 @@ menuPage2:
             cout << "\n";
 
             h1.display();
-            cout << "\n\n\nPress any button to continue..............";
+            cout << "Press any button to continue..............";
             getch();
             system("cls");
             break;
@@ -530,10 +531,10 @@ menuPage2:
                 cout << "\t\t\t\t    ================= Search Student Record =================" << endl;
                 cout << "\t\t\t\t    =========================================================" << endl;
                 cout << "\n";
-                cout << "Please enter student ID: " ;
+                cout << "\t\t\t\t\t Please enter student ID: " ;
                 cin >> studentIdInt;
 
-                cout << "\nSearching";
+                cout << "\n\t\t\t\t\t Searching";
                 for(int a = 1; a < 6; a++)
                     {
                         Sleep(500);
@@ -544,11 +545,11 @@ menuPage2:
 
                 cout << "\n\n";
 
-                cout << "Do you want to search for another student?(y/n): " << endl;
+                cout << "\t\t\t\t\t Do you want to search for another student?(y/n): ";
                 cin >> opt4;
 
                 if(opt4 == 'n' || opt4 == 'N'){
-                    cout << "\nReturning to Menu";
+                    cout << "\n\t\t\t\t\t Returning to Menu";
                     for(int a = 1; a < 6; a++)
                     {
                         Sleep(500);

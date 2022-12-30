@@ -18,6 +18,21 @@ hashTableClass::hashTableClass(){ //Constructor
     }
 }
 
+hashTableClass::~hashTableClass(){
+
+    for(int i=0; i<HASHTABLESIZE; i++){                  //Traverse through the hash table to deallocate student structure created by "new"
+        student * delPtr = hashTable[i];
+
+        while(delPtr -> next != NULL){
+            delete delPtr;
+            delPtr = delPtr ->next;
+        }
+        delete delPtr;
+    }
+
+}
+
+
 int hashTableClass::hashFunction(int key){
 
     int index;
@@ -165,27 +180,6 @@ void hashTableClass::display(){                 //Display students records in th
 
     int counter;
     int num = 1;
-    //int index = hashFunction(id);
-
-    /*student * ptr = hashTable[i];
-
-    if(ptr != NULL){
-        while(ptr != NULL){
-            for(int i = 1; i < HASHTABLESIZE; i++){
-                if(ptr -> id != 0){
-                    cout << "\t" << ptr -> id ;
-                    cout << "\t\t" << ptr -> name ;
-                    cout << "\n" ;
-
-                    while(ptr->next != NULL){
-                        ptr = ptr->next;
-                        counter++;
-                    }
-                }
-            }
-
-        }
-    }*/
 
     student * ptr;
 
@@ -201,9 +195,6 @@ void hashTableClass::display(){                 //Display students records in th
 
             ptr = hashTable[i];
 
-        /*cout << "\t" << ptr -> id;
-        cout << "\t\t" << ptr -> name;
-        cout << "\n" ;*/
 
             if(ptr -> next != NULL){
                 ptr = ptr -> next;
@@ -234,11 +225,11 @@ void hashTableClass::searchStudent(int id){     //Search student in hash table
     if(ptr != NULL){
     while(ptr != NULL){
         if(ptr -> id == id){
-            cout << "\33[2K \n-------- Student Information -------" << endl;
+            cout << " \33[2K \n\t\t\t\t\t-------- Student Information -------" << endl;
             cout << "\n";
-            cout << "Student ID: " << ptr -> id << endl;
-            cout << "Student Name: " << ptr-> name << endl;
-            cout << "Student Found!" << endl;
+            cout << "\t\t\t\t\t Student ID: " << ptr -> id << endl;
+            cout << "\t\t\t\t\t Student Name: " << ptr-> name << endl;
+            cout << "\t\t\t\t\t Student Found!" << endl;
             foundStudent = true;
         }
         ptr  = ptr->next;
@@ -246,7 +237,7 @@ void hashTableClass::searchStudent(int id){     //Search student in hash table
     }
 
         if(!foundStudent){
-            cout << "No student found" << endl;
+            cout << "\n\t\t\t\t\t No student found" << endl;
         }
      }
 
