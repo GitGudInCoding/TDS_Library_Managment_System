@@ -9,7 +9,7 @@
 
 using namespace std;
 
-
+char opt4;
 
 int main()
 {
@@ -27,7 +27,6 @@ int main()
     int studentIdInt;
     string studentIdString;
     string studentName;
-    char opt4;
 
 menuPage1:
     do{
@@ -240,7 +239,6 @@ menuPage1:
             getch();
 
             }else if(inputyn == "n"){
-
                 system("cls");
                 break;
             }
@@ -261,11 +259,8 @@ menuPage1:
             cout << "\t\t\t\t\t 3. Sort by ID \t\t\t\t\t" << endl;
             cout << "\t\t\t\t\t 4. Back to Menu \t\t\t\t\t" << endl;
             char c;
-             cout << "\n";
-             cout << "\t\t\t\t\t Enter Your Selection: ";
-             cin >> c;
-             cin.sync(); //clear the input buffer;
-
+            cin >> c;
+            cin.sync();
 
             switch(c)
             {
@@ -485,7 +480,7 @@ menuPage2:
             cout << "\n";
 
             h1.display();
-            cout << "Press any button to continue..............";
+            cout << "\n\n\nPress any button to continue..............";
             getch();
             system("cls");
             break;
@@ -531,25 +526,33 @@ menuPage2:
                 cout << "\t\t\t\t    ================= Search Student Record =================" << endl;
                 cout << "\t\t\t\t    =========================================================" << endl;
                 cout << "\n";
-                cout << "\t\t\t\t\t Please enter student ID: " ;
-                cin >> studentIdInt;
+                cout << "Please enter student ID: " ;
 
-                cout << "\n\t\t\t\t\t Searching";
+                while(!(cin >> studentIdInt)){
+                    cout << "\n";
+                    cout << "Invalid Input! Please enter student ID again: ";
+                    cin.clear();
+                    cin.ignore();
+                }
+
+                cout << "\nSearching";
                 for(int a = 1; a < 6; a++)
                     {
                         Sleep(500);
                         cout << "...";
                     }
 
+                cout << "\33[2K";
+
                 h1.searchStudent(studentIdInt);
 
                 cout << "\n\n";
 
-                cout << "\t\t\t\t\t Do you want to search for another student?(y/n): ";
+                cout << "Do you want to search for another student?(y/n): " << endl;
                 cin >> opt4;
 
                 if(opt4 == 'n' || opt4 == 'N'){
-                    cout << "\n\t\t\t\t\t Returning to Menu";
+                    cout << "\nReturning to Menu";
                     for(int a = 1; a < 6; a++)
                     {
                         Sleep(500);
@@ -557,6 +560,7 @@ menuPage2:
                     }
                     goto menuPage2;
                 }
+
             }while(opt4 == 'y' || opt4 == 'Y');
             break;
         }
@@ -654,4 +658,5 @@ menuPage2:
     cout<<"\t \t \t \t \t \t See You Next Time! \n\n\n\n"<<endl;
     }
 }
+
 
