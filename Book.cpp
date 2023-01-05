@@ -16,7 +16,7 @@ COORD p={x,y};
 SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),p);
 }
 
-Book::Book() : size(0), head(NULL), temp(NULL), disp(NULL)
+Book::Book() : size(1000), head(NULL), temp(NULL), disp(NULL)
 {
 }// Default constructor set size start from 0 and head start from NULL
 
@@ -76,7 +76,6 @@ void Book::addBook(string bname1, string bau1, string bpu1)
 
 void Book::delBook(int delNo)
 {
-
     if(head==NULL)
     {
         cout << "\n\n\n";
@@ -87,6 +86,8 @@ void Book::delBook(int delNo)
         BookNode *prev = head;
         BookNode *delp = head;
         int df = 0;
+        int tempdel = getSize();
+
 
 
 
@@ -96,9 +97,10 @@ void Book::delBook(int delNo)
 
                 df = df+1;
                 cout << "\n\n\n\n";
-                cout << "\t\t\t\t\t Book Record Successfully Deleted! . . . ";
+                cout << "\t\t\t\t\t Book Record Successfully Deleted! 1 . . ";
 
-                }else if(delNo > getSize()-1){
+                }else if(delNo < tempdel){
+
                     while( delp -> next != NULL)
                     {
                         prev = delp;
@@ -106,14 +108,14 @@ void Book::delBook(int delNo)
 
                         if(delNo == delp-> bookID)
                         {
-                             prev -> next = NULL;
+                             prev -> next = delp -> next;
                              delete(delp);
                              df=df+1;
                              temp = prev;
 
 
                              cout << "\n\n\n\n";
-                             cout << "\t\t\t\t\t Book Record Successfully Deleted! . . . ";
+                             cout << "\t\t\t\t\t Book Record Successfully Deleted! 2 . . ";
 
 
                         }
@@ -134,7 +136,7 @@ void Book::delBook(int delNo)
                              delete(delp);
                              df =df+1;
                              cout << "\n\n\n\n";
-                             cout << "\t\t\t\t\t Book Record Successfully Deleted! . . . ";
+                             cout << "\t\t\t\t\t Book Record Successfully Deleted! 3 . . ";
 
 
 
@@ -315,7 +317,6 @@ void Book::displayBook()
 
     cout << "\n\n\n\n\n";
     cout << "\t\t\t\t\t Press Any Key to Return to Menu . . . ";
-
 
 }
 
